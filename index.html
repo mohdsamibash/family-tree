@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>شجرة عائلة علي باش</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -62,12 +62,12 @@ body{
 
 /* ══════ SPLASH PAGE ══════ */
 #splash{
-  position:fixed;inset:0;z-index:500;
+  position:fixed;inset:0;z-index:300;
   background:var(--bg);
   display:flex;flex-direction:column;
   transition:opacity 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-#splash.hide{opacity:0;pointer-events:none;z-index:-1;}
+#splash.hide{opacity:0;pointer-events:none;}
 
 #splash-header{
   width:100%;background:var(--glass);
@@ -90,29 +90,23 @@ body{
 #splash-canvas:active{cursor:grabbing;}
 
 #splash-btn-wrap{
-  position:fixed;bottom:0;left:0;right:0;height:120px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-  background:linear-gradient(to top,var(--bg) 60%,transparent);
+  position:fixed;bottom:0;left:0;right:0;height:100px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top,var(--bg) 50%,transparent);
   z-index:10;pointer-events:none;
 }
-#splash-btn, #splash-btn2{
+#splash-btn{
   pointer-events:all;
   background:var(--text);color:#FFF;border:none;
-  padding:14px 40px;border-radius:980px;
-  font-family:'Tajawal',sans-serif;font-size:15px;font-weight:700;
+  padding:16px 48px;border-radius:980px;
+  font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;
   cursor:pointer;letter-spacing:0.01em;
   box-shadow:0 8px 32px rgba(0,0,0,0.15);
   transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
   -webkit-tap-highlight-color:transparent;
 }
-#splash-btn2{
-  background:transparent;color:var(--text);
-  border:1.5px solid var(--glass-border);
-  box-shadow:0 4px 20px rgba(0,0,0,0.06);
-  font-size:14px;padding:12px 36px;
-}
-#splash-btn:hover,#splash-btn2:hover{transform:scale(1.04);}
-#splash-btn:active,#splash-btn2:active{transform:scale(0.97);}
+#splash-btn:hover{transform:scale(1.04);box-shadow:0 12px 40px rgba(0,0,0,0.2);}
+#splash-btn:active{transform:scale(0.97);}
 
 #splash-legend{
   position:fixed;bottom:130px;right:14px;z-index:10;
@@ -157,13 +151,13 @@ body{
 .hdr-menu-btn:hover{background:rgba(0,0,0,0.05);}
 .hdr-menu-btn svg{width:20px;height:20px;color:var(--text);}
 #menu-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.2);z-index:900;
+  position:fixed;inset:0;background:rgba(0,0,0,0.2);z-index:250;
   opacity:0;pointer-events:none;transition:opacity 0.25s;
   backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
 }
 #menu-overlay.show{opacity:1;pointer-events:all;}
 #menu-drawer{
-  position:fixed;top:0;right:0;z-index:910;
+  position:fixed;top:0;right:0;z-index:260;
   width:240px;height:100vh;
   background:var(--surface);
   border-left:1px solid var(--glass-border);
@@ -231,59 +225,10 @@ body{
 .si-full{font-size:11px;color:var(--text-dim);margin-top:3px;line-height:1.6;}
 
 /* CANVAS */
-#canvas-wrap{position:fixed;top:56px;left:0;right:0;bottom:0;touch-action:none;
-  padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);
-}
+#canvas-wrap{position:fixed;top:56px;left:0;right:0;bottom:0;touch-action:none;}
 canvas{display:block;}
 
 
-
-
-/* ══ COLLAPSIBLE TREE PAGE ══ */
-#ctree{
-  position:fixed;inset:0;z-index:450;background:var(--bg);
-  display:none;opacity:0;
-  transition:opacity 0.5s;
-}
-#ctree.show{display:block;opacity:1;pointer-events:all;}
-#ct-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;height:52px;
-  background:var(--bg);
-  border-bottom:1px solid var(--glass-border);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity 0.4s;
-}
-#ct-nav.show{opacity:1;pointer-events:all;}
-.ctnav-in{width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between;}
-.ctnav-link{font-size:13px;font-weight:600;color:var(--gen1);cursor:pointer;background:none;border:none;font-family:'Tajawal',sans-serif;}
-.ctnav-title{font-size:14px;font-weight:700;color:var(--text);}
-#ct-canvas-wrap{position:fixed;top:52px;left:0;right:0;bottom:0;touch-action:none;
-  padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);
-}
-#ct-legend{
-  position:fixed;bottom:20px;right:16px;z-index:460;
-  background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--glass-border);border-radius:16px;
-  padding:14px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.08);
-  font-size:12px;
-}
-.ct-leg-hd{font-size:11px;font-weight:600;color:var(--text-muted);text-align:center;margin-bottom:8px;}
-.ct-leg-r{display:flex;align-items:center;gap:8px;padding:3px 0;justify-content:flex-end;}
-.ct-leg-sw{width:10px;height:10px;border-radius:50%;}
-#ct-controls{
-  position:fixed;bottom:28px;left:16px;z-index:460;
-  display:flex;gap:2px;
-  background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--glass-border);border-radius:980px;padding:4px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
-}
-.ct-ctrl{
-  background:transparent;border:none;color:var(--text-dim);
-  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;border-radius:50%;transition:all 0.15s;
-}
-.ct-ctrl:hover{background:rgba(0,0,0,0.05);} 
-.ct-ctrl:active{transform:scale(0.88);}
 
 /* ══ INTERACTIVE TREE BUTTON ══ */
 #itree-btn{
@@ -388,8 +333,6 @@ canvas{display:block;}
   font-size:12px;color:var(--text-dim);text-align:center;margin-top:10px;
   padding-top:10px;border-top:1px solid rgba(0,0,0,0.04);font-weight:500;
 }
-
-@keyframes ctSheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 
 /* CONTROLS - Bottom Left */
 #controls{
@@ -716,23 +659,10 @@ footer{text-align:center;padding:40px 24px;font-size:12px;color:var(--text-muted
 
 
 
-@media(max-width:500px),(max-height:500px){
+@media(max-width:500px){
   .cards-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
   .hero-sons{flex-direction:column;align-items:center;}
   .son-btn{width:200px;}
-  #legend{display:none !important;}
-  #ct-legend{display:none !important;}
-}
-/* Fix landscape mobile safe area */
-@supports(padding: env(safe-area-inset-left)){
-  #header,#ct-nav,#it-nav,#explore-nav{
-    padding-left:env(safe-area-inset-left);
-    padding-right:env(safe-area-inset-right);
-  }
-  #canvas-wrap,#ct-canvas-wrap{
-    left:env(safe-area-inset-left);
-    right:env(safe-area-inset-right);
-  }
 }
 
 
@@ -748,7 +678,6 @@ body.dark #splash-canvas-wrap{background:var(--bg);}
 body.dark .splash-title{color:var(--text);}
 body.dark .splash-sub{color:var(--text-dim);}
 body.dark #splash-btn{background:var(--surface);color:var(--text);border:1px solid var(--glass-border);}
-body.dark #splash-btn2{color:var(--text-dim);border-color:var(--glass-border);}
 body.dark .it-children{background:rgba(255,255,255,0.02);}
 body.dark .it-detail{background:var(--surface);border-color:var(--glass-border);}
 body.dark .it-hero{color:var(--text);}
@@ -941,14 +870,9 @@ body.dark .it-card::after{
 <!-- ═══ SPLASH PAGE ═══ -->
 <div id="splash">
   <div id="splash-header">
-    <div style="display:flex;align-items:center;gap:12px;">
-      <button class="hdr-menu-btn" onclick="toggleMenu()" style="position:relative;z-index:600;">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
-      <div>
-        <div class="title">شجرة عائلة علي باش</div>
-        <div class="sub">203 فرد · ٧ أجيال</div>
-      </div>
+    <div>
+      <div class="title">شجرة عائلة علي باش</div>
+      <div class="sub">١٩٢ فرد · ٧ أجيال</div>
     </div>
     <div class="sub" style="font-size:11px;">مارس ٢٠٢٦</div>
   </div>
@@ -961,28 +885,13 @@ body.dark .it-card::after{
     <div class="leg-r"><div class="leg-sw" style="background:var(--gen1)"></div>الجيل الأول</div>
     <div class="leg-r"><div class="leg-sw" style="background:var(--gen2)"></div>الجيل الثاني</div>
   </div>
+  <div id="splash-hint">اسحب للتنقل · اضغط الزر لعرض الشجرة الكاملة ↓</div>
   <div id="splash-btn-wrap">
     <button id="splash-btn" onclick="goToFull()">عرض الشجرة الكاملة</button>
-    <button id="splash-btn2" onclick="goToCTree()">شجرة قابلة للطي</button>
   </div>
 </div>
 
 <!-- ═══ MAIN APP ═══ -->
-<!-- ═══ GLOBAL MENU ═══ -->
-<div id="menu-overlay" onclick="toggleMenu()"></div>
-<div id="menu-drawer">
-  <button class="menu-close" onclick="toggleMenu()">✕</button>
-  <button class="menu-item" onclick="goToSplash();toggleMenu()">الصفحة الرئيسية<div class="menu-sub">الشجرة المختصرة</div></button>
-  <button class="menu-item" onclick="goToFull();toggleMenu()">الشجرة الكاملة<div class="menu-sub">جميع الأفراد</div></button>
-  <button class="menu-item" onclick="goToCTree();toggleMenu()">شجرة قابلة للطي<div class="menu-sub">اضغط لتوسيع الفروع</div></button>
-  <button class="menu-item" onclick="goToExplore();toggleMenu()">استكشف العائلة<div class="menu-sub">إحصائيات · بحث النسب</div></button>
-  <button class="menu-item" onclick="goToITree();toggleMenu()">شجرة تفاعلية<div class="menu-sub">اضغط على الاسم لاستكشاف فرعه</div></button>
-  <div class="menu-toggle" style="margin-top:auto;border-top:1px solid var(--glass-border);border-bottom:none;padding-top:16px;">
-    <div><div class="menu-toggle-label">الوضع الليلي</div><div class="menu-toggle-sub">Dark Mode</div></div>
-    <div class="toggle-switch" id="dark-toggle" onclick="toggleDark()"><div class="toggle-knob"></div></div>
-  </div>
-</div>
-
 <div id="app">
   <div id="header">
     <div class="hdr-right">
@@ -994,6 +903,17 @@ body.dark .it-card::after{
     <div id="search-wrap">
       <input type="text" id="search-input" placeholder="بحث..." autocomplete="off">
       <span class="s-icon">⌘</span>
+    </div>
+  </div>
+  <div id="menu-overlay" onclick="toggleMenu()"></div>
+  <div id="menu-drawer">
+    <button class="menu-close" onclick="toggleMenu()">✕</button>
+    <button class="menu-item" onclick="goToSplash();toggleMenu()">الصفحة الرئيسية<div class="menu-sub">الشجرة المختصرة</div></button>
+    <button class="menu-item" onclick="goToExplore();toggleMenu()">استكشف العائلة<div class="menu-sub">إحصائيات · بحث النسب</div></button>
+    <button class="menu-item" onclick="goToITree();toggleMenu()">شجرة تفاعلية<div class="menu-sub">اضغط على الاسم لاستكشاف فرعه</div></button>
+    <div class="menu-toggle" style="margin-top:auto;border-top:1px solid var(--glass-border);border-bottom:none;padding-top:16px;">
+      <div><div class="menu-toggle-label">الوضع الليلي</div><div class="menu-toggle-sub">Dark Mode</div></div>
+      <div class="toggle-switch" id="dark-toggle" onclick="toggleDark()"><div class="toggle-knob"></div></div>
     </div>
   </div>
   <div id="search-drop"></div>
@@ -1040,11 +960,11 @@ body.dark .it-card::after{
 
 <script>
 // ── DATA ──
-const PEOPLE=[{"id": 1, "father_id": null, "name": "علي باش", "full_name": "علي باش", "generation": 0}, {"id": 2, "father_id": 1, "name": "حسين", "full_name": "حسين علي باش", "generation": 1}, {"id": 3, "father_id": 1, "name": "محمد", "full_name": "محمد علي باش", "generation": 1}, {"id": 4, "father_id": 2, "name": "علي خان", "full_name": "علي خان حسين علي باش", "generation": 2}, {"id": 5, "father_id": 2, "name": "يوسف", "full_name": "يوسف حسين علي باش", "generation": 2}, {"id": 6, "father_id": 2, "name": "حجي", "full_name": "حجي حسين علي باش", "generation": 2}, {"id": 7, "father_id": 3, "name": "باشا", "full_name": "باشا محمد علي باش", "generation": 2}, {"id": 8, "father_id": 4, "name": "بدر", "full_name": "بدر علي خان حسين علي باش", "generation": 3}, {"id": 9, "father_id": 4, "name": "محمد", "full_name": "محمد علي خان حسين علي باش", "generation": 3}, {"id": 10, "father_id": 4, "name": "حمود", "full_name": "حمود علي خان حسين علي باش", "generation": 3}, {"id": 11, "father_id": 4, "name": "عبداللطيف", "full_name": "عبداللطيف علي خان حسين علي باش", "generation": 3}, {"id": 12, "father_id": 5, "name": "عيسى", "full_name": "عيسى يوسف حسين علي باش", "generation": 3}, {"id": 13, "father_id": 6, "name": "ناصر", "full_name": "ناصر حجي حسين علي باش", "generation": 3}, {"id": 14, "father_id": 7, "name": "حسن", "full_name": "حسن باشا محمد علي باش", "generation": 3}, {"id": 15, "father_id": 7, "name": "احمد", "full_name": "احمد باشا محمد علي باش", "generation": 3}, {"id": 16, "father_id": 7, "name": "حسين", "full_name": "حسين باشا محمد علي باش", "generation": 3}, {"id": 17, "father_id": 7, "name": "محمد", "full_name": "محمد باشا محمد علي باش", "generation": 3}, {"id": 18, "father_id": 8, "name": "علي خان", "full_name": "علي خان بدر علي خان حسين علي باش", "generation": 4}, {"id": 19, "father_id": 8, "name": "هلال", "full_name": "هلال بدر علي خان حسين علي باش", "generation": 4}, {"id": 20, "father_id": 8, "name": "عبدالامير", "full_name": "عبدالامير بدر علي خان حسين علي باش", "generation": 4}, {"id": 21, "father_id": 8, "name": "عبدالامام", "full_name": "عبدالامام بدر علي خان حسين علي باش", "generation": 4}, {"id": 22, "father_id": 8, "name": "عبدالحليم", "full_name": "عبدالحليم بدر علي خان حسين علي باش", "generation": 4}, {"id": 23, "father_id": 8, "name": "سعيد", "full_name": "سعيد بدر علي خان حسين علي باش", "generation": 4}, {"id": 24, "father_id": 9, "name": "جاسم", "full_name": "جاسم محمد علي خان حسين علي باش", "generation": 4}, {"id": 25, "father_id": 9, "name": "حيدر", "full_name": "حيدر محمد علي خان حسين علي باش", "generation": 4}, {"id": 26, "father_id": 9, "name": "خليل", "full_name": "خليل محمد علي خان حسين علي باش", "generation": 4}, {"id": 27, "father_id": 9, "name": "عبدالرضا", "full_name": "عبدالرضا محمد علي خان حسين علي باش", "generation": 4}, {"id": 28, "father_id": 9, "name": "طالب", "full_name": "طالب محمد علي خان حسين علي باش", "generation": 4}, {"id": 29, "father_id": 10, "name": "فيصل", "full_name": "فيصل حمود علي خان حسين علي باش", "generation": 4}, {"id": 30, "father_id": 10, "name": "صادق", "full_name": "صادق حمود علي خان حسين علي باش", "generation": 4}, {"id": 31, "father_id": 10, "name": "صالح", "full_name": "صالح حمود علي خان حسين علي باش", "generation": 4}, {"id": 32, "father_id": 10, "name": "عبدالعزيز", "full_name": "عبدالعزيز حمود علي خان حسين علي باش", "generation": 4}, {"id": 33, "father_id": 11, "name": "عباس", "full_name": "عباس عبداللطيف علي خان حسين علي باش", "generation": 4}, {"id": 34, "father_id": 11, "name": "فاضل", "full_name": "فاضل عبداللطيف علي خان حسين علي باش", "generation": 4}, {"id": 35, "father_id": 11, "name": "مصطفى", "full_name": "مصطفى عبداللطيف علي خان حسين علي باش", "generation": 4}, {"id": 36, "father_id": 12, "name": "عبدالله", "full_name": "عبدالله عيسى يوسف حسين علي باش", "generation": 4}, {"id": 37, "father_id": 12, "name": "يوسف", "full_name": "يوسف عيسى يوسف حسين علي باش", "generation": 4}, {"id": 38, "father_id": 12, "name": "سامي", "full_name": "سامي عيسى يوسف حسين علي باش", "generation": 4}, {"id": 39, "father_id": 12, "name": "نبيل", "full_name": "نبيل عيسى يوسف حسين علي باش", "generation": 4}, {"id": 40, "father_id": 12, "name": "محمد", "full_name": "محمد عيسى يوسف حسين علي باش", "generation": 4}, {"id": 41, "father_id": 12, "name": "علي", "full_name": "علي عيسى يوسف حسين علي باش", "generation": 4}, {"id": 42, "father_id": 13, "name": "بدر", "full_name": "بدر ناصر حجي حسين علي باش", "generation": 4}, {"id": 43, "father_id": 13, "name": "عبدالهادي", "full_name": "عبدالهادي ناصر حجي حسين علي باش", "generation": 4}, {"id": 44, "father_id": 13, "name": "محمد", "full_name": "محمد ناصر حجي حسين علي باش", "generation": 4}, {"id": 45, "father_id": 13, "name": "حسين", "full_name": "حسين ناصر حجي حسين علي باش", "generation": 4}, {"id": 46, "father_id": 15, "name": "يوسف", "full_name": "يوسف احمد باشا محمد علي باش", "generation": 4}, {"id": 47, "father_id": 15, "name": "جواد", "full_name": "جواد احمد باشا محمد علي باش", "generation": 4}, {"id": 48, "father_id": 15, "name": "علي", "full_name": "علي احمد باشا محمد علي باش", "generation": 4}, {"id": 49, "father_id": 15, "name": "عبدالصاحب", "full_name": "عبدالصاحب احمد باشا محمد علي باش", "generation": 4}, {"id": 50, "father_id": 15, "name": "محمد", "full_name": "محمد احمد باشا محمد علي باش", "generation": 4}, {"id": 51, "father_id": 16, "name": "علي", "full_name": "علي حسين باشا محمد علي باش", "generation": 4}, {"id": 52, "father_id": 16, "name": "صادق", "full_name": "صادق حسين باشا محمد علي باش", "generation": 4}, {"id": 53, "father_id": 16, "name": "عقيل", "full_name": "عقيل حسين باشا محمد علي باش", "generation": 4}, {"id": 54, "father_id": 17, "name": "باشا", "full_name": "باشا محمد باشا محمد علي باش", "generation": 4}, {"id": 55, "father_id": 17, "name": "عبدالمحسن", "full_name": "عبدالمحسن محمد باشا محمد علي باش", "generation": 4}, {"id": 56, "father_id": 17, "name": "عبدالمجيد", "full_name": "عبدالمجيد محمد باشا محمد علي باش", "generation": 4}, {"id": 57, "father_id": 17, "name": "عبدالرسول", "full_name": "عبدالرسول محمد باشا محمد علي باش", "generation": 4}, {"id": 58, "father_id": 17, "name": "بدر", "full_name": "بدر محمد باشا محمد علي باش", "generation": 4}, {"id": 59, "father_id": 17, "name": "عبدالحميد", "full_name": "عبدالحميد محمد باشا محمد علي باش", "generation": 4}, {"id": 60, "father_id": 17, "name": "منصور", "full_name": "منصور محمد باشا محمد علي باش", "generation": 4}, {"id": 61, "father_id": 17, "name": "ايمن", "full_name": "ايمن محمد باشا محمد علي باش", "generation": 4}, {"id": 62, "father_id": 36, "name": "أسامة", "full_name": "أسامة عبدالله عيسى يوسف حسين علي باش", "generation": 5}, {"id": 63, "father_id": 37, "name": "احمد", "full_name": "احمد يوسف عيسى يوسف حسين علي باش", "generation": 5}, {"id": 64, "father_id": 37, "name": "عيسى", "full_name": "عيسى يوسف عيسى يوسف حسين علي باش", "generation": 5}, {"id": 65, "father_id": 37, "name": "سليمان", "full_name": "سليمان يوسف عيسى يوسف حسين علي باش", "generation": 5}, {"id": 66, "father_id": 38, "name": "محمد", "full_name": "محمد سامي عيسى يوسف حسين علي باش", "generation": 5}, {"id": 67, "father_id": 38, "name": "حسين", "full_name": "حسين سامي عيسى يوسف حسين علي باش", "generation": 5}, {"id": 68, "father_id": 40, "name": "جاسم", "full_name": "جاسم محمد عيسى يوسف حسين علي باش", "generation": 5}, {"id": 69, "father_id": 40, "name": "عبدالعزيز", "full_name": "عبدالعزيز محمد عيسى يوسف حسين علي باش", "generation": 5}, {"id": 70, "father_id": 40, "name": "عبدالله", "full_name": "عبدالله محمد عيسى يوسف حسين علي باش", "generation": 5}, {"id": 71, "father_id": 42, "name": "ياسر", "full_name": "ياسر بدر ناصر حجي حسين علي باش", "generation": 5}, {"id": 72, "father_id": 42, "name": "يوسف", "full_name": "يوسف بدر ناصر حجي حسين علي باش", "generation": 5}, {"id": 73, "father_id": 42, "name": "مصطفى", "full_name": "مصطفى بدر ناصر حجي حسين علي باش", "generation": 5}, {"id": 74, "father_id": 43, "name": "علي", "full_name": "علي عبدالهادي ناصر حجي حسين علي باش", "generation": 5}, {"id": 75, "father_id": 43, "name": "عمار", "full_name": "عمار عبدالهادي ناصر حجي حسين علي باش", "generation": 5}, {"id": 76, "father_id": 43, "name": "احمد", "full_name": "احمد عبدالهادي ناصر حجي حسين علي باش", "generation": 5}, {"id": 77, "father_id": 44, "name": "حمزة", "full_name": "حمزة محمد ناصر حجي حسين علي باش", "generation": 5}, {"id": 78, "father_id": 44, "name": "حسين", "full_name": "حسين محمد ناصر حجي حسين علي باش", "generation": 5}, {"id": 79, "father_id": 44, "name": "ناصر", "full_name": "ناصر محمد ناصر حجي حسين علي باش", "generation": 5}, {"id": 80, "father_id": 45, "name": "علي", "full_name": "علي حسين ناصر حجي حسين علي باش", "generation": 5}, {"id": 81, "father_id": 45, "name": "سلمان", "full_name": "سلمان حسين ناصر حجي حسين علي باش", "generation": 5}, {"id": 82, "father_id": 29, "name": "غازي", "full_name": "غازي فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 83, "father_id": 29, "name": "جواد", "full_name": "جواد فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 84, "father_id": 29, "name": "خالد", "full_name": "خالد فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 85, "father_id": 29, "name": "احمد", "full_name": "احمد فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 86, "father_id": 29, "name": "يحيى", "full_name": "يحيى فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 87, "father_id": 30, "name": "بشار", "full_name": "بشار صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 88, "father_id": 30, "name": "حمود", "full_name": "حمود صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 89, "father_id": 30, "name": "محمد", "full_name": "محمد صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 90, "father_id": 30, "name": "علي", "full_name": "علي صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 91, "father_id": 30, "name": "حسين", "full_name": "حسين صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 92, "father_id": 32, "name": "حسين", "full_name": "حسين عبدالعزيز حمود علي خان حسين علي باش", "generation": 5}, {"id": 93, "father_id": 32, "name": "احمد", "full_name": "احمد عبدالعزيز حمود علي خان حسين علي باش", "generation": 5}, {"id": 94, "father_id": 32, "name": "علي", "full_name": "علي عبدالعزيز حمود علي خان حسين علي باش", "generation": 5}, {"id": 95, "father_id": 24, "name": "عبدالامير", "full_name": "عبدالامير جاسم محمد علي خان حسين علي باش", "generation": 5}, {"id": 96, "father_id": 24, "name": "أنور", "full_name": "أنور جاسم محمد علي خان حسين علي باش", "generation": 5}, {"id": 97, "father_id": 24, "name": "محمد", "full_name": "محمد جاسم محمد علي خان حسين علي باش", "generation": 5}, {"id": 98, "father_id": 25, "name": "مصطفى", "full_name": "مصطفى حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 99, "father_id": 25, "name": "احمد", "full_name": "احمد حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 100, "father_id": 25, "name": "علي", "full_name": "علي حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 101, "father_id": 25, "name": "عبدالله", "full_name": "عبدالله حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 102, "father_id": 26, "name": "عبدالعزيز", "full_name": "عبدالعزيز خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 103, "father_id": 26, "name": "هاني", "full_name": "هاني خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 104, "father_id": 26, "name": "صالح", "full_name": "صالح خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 105, "father_id": 26, "name": "حسين", "full_name": "حسين خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 106, "father_id": 26, "name": "محمد", "full_name": "محمد خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 107, "father_id": 26, "name": "عبدالله", "full_name": "عبدالله خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 108, "father_id": 26, "name": "يوسف", "full_name": "يوسف خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 109, "father_id": 28, "name": "علي", "full_name": "علي طالب محمد علي خان حسين علي باش", "generation": 5}, {"id": 110, "father_id": 33, "name": "عبداللطيف", "full_name": "عبداللطيف عباس عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 111, "father_id": 33, "name": "بدر", "full_name": "بدر عباس عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 112, "father_id": 33, "name": "حمود", "full_name": "حمود عباس عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 113, "father_id": 34, "name": "محمد", "full_name": "محمد فاضل عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 114, "father_id": 34, "name": "عبداللطيف", "full_name": "عبداللطيف فاضل عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 115, "father_id": 34, "name": "عبدالله", "full_name": "عبدالله فاضل عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 116, "father_id": 35, "name": "ياسر", "full_name": "ياسر مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 117, "father_id": 35, "name": "احمد", "full_name": "احمد مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 118, "father_id": 35, "name": "محمد", "full_name": "محمد مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 119, "father_id": 35, "name": "عبداللطيف", "full_name": "عبداللطيف مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 120, "father_id": 46, "name": "عادل", "full_name": "عادل يوسف احمد باشا محمد علي باش", "generation": 5}, {"id": 121, "father_id": 46, "name": "عدنان", "full_name": "عدنان يوسف احمد باشا محمد علي باش", "generation": 5}, {"id": 122, "father_id": 46, "name": "داوود", "full_name": "داوود يوسف احمد باشا محمد علي باش", "generation": 5}, {"id": 123, "father_id": 47, "name": "محمد", "full_name": "محمد جواد احمد باشا محمد علي باش", "generation": 5}, {"id": 124, "father_id": 47, "name": "احمد", "full_name": "احمد جواد احمد باشا محمد علي باش", "generation": 5}, {"id": 125, "father_id": 47, "name": "حسن", "full_name": "حسن جواد احمد باشا محمد علي باش", "generation": 5}, {"id": 126, "father_id": 48, "name": "محمد", "full_name": "محمد علي احمد باشا محمد علي باش", "generation": 5}, {"id": 127, "father_id": 48, "name": "عبدالله", "full_name": "عبدالله علي احمد باشا محمد علي باش", "generation": 5}, {"id": 128, "father_id": 48, "name": "مصطفى", "full_name": "مصطفى علي احمد باشا محمد علي باش", "generation": 5}, {"id": 129, "father_id": 48, "name": "عباس", "full_name": "عباس علي احمد باشا محمد علي باش", "generation": 5}, {"id": 130, "father_id": 48, "name": "احمد", "full_name": "احمد علي احمد باشا محمد علي باش", "generation": 5}, {"id": 131, "father_id": 49, "name": "احمد", "full_name": "احمد عبدالصاحب احمد باشا محمد علي باش", "generation": 5}, {"id": 132, "father_id": 49, "name": "علي", "full_name": "علي عبدالصاحب احمد باشا محمد علي باش", "generation": 5}, {"id": 133, "father_id": 49, "name": "عبدالله", "full_name": "عبدالله عبدالصاحب احمد باشا محمد علي باش", "generation": 5}, {"id": 134, "father_id": 52, "name": "حسين", "full_name": "حسين صادق حسين باشا محمد علي باش", "generation": 5}, {"id": 135, "father_id": 54, "name": "عبدالصمد", "full_name": "عبدالصمد باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 136, "father_id": 54, "name": "نبيل", "full_name": "نبيل باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 137, "father_id": 54, "name": "خالد", "full_name": "خالد باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 138, "father_id": 54, "name": "وليد", "full_name": "وليد باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 139, "father_id": 56, "name": "عبدالله", "full_name": "عبدالله عبدالمجيد محمد باشا محمد علي باش", "generation": 5}, {"id": 140, "father_id": 56, "name": "محمد", "full_name": "محمد عبدالمجيد محمد باشا محمد علي باش", "generation": 5}, {"id": 141, "father_id": 57, "name": "فهد", "full_name": "فهد عبدالرسول محمد باشا محمد علي باش", "generation": 5}, {"id": 142, "father_id": 57, "name": "عبدالله", "full_name": "عبدالله عبدالرسول محمد باشا محمد علي باش", "generation": 5}, {"id": 143, "father_id": 18, "name": "حسين", "full_name": "حسين علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 144, "father_id": 18, "name": "عبدالرسول", "full_name": "عبدالرسول علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 145, "father_id": 18, "name": "عبدالنبي", "full_name": "عبدالنبي علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 146, "father_id": 18, "name": "عبدالمجيد", "full_name": "عبدالمجيد علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 147, "father_id": 18, "name": "عادل", "full_name": "عادل علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 148, "father_id": 18, "name": "عدنان", "full_name": "عدنان علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 149, "father_id": 18, "name": "ثابت", "full_name": "ثابت علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 150, "father_id": 19, "name": "حبيب", "full_name": "حبيب هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 151, "father_id": 19, "name": "عبدالهادي", "full_name": "عبدالهادي هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 152, "father_id": 19, "name": "احمد", "full_name": "احمد هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 153, "father_id": 19, "name": "عبدالمجيد", "full_name": "عبدالمجيد هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 154, "father_id": 21, "name": "ميثم", "full_name": "ميثم عبدالامام بدر علي خان حسين علي باش", "generation": 5}, {"id": 155, "father_id": 21, "name": "مقداد", "full_name": "مقداد عبدالامام بدر علي خان حسين علي باش", "generation": 5}, {"id": 156, "father_id": 22, "name": "محمد", "full_name": "محمد عبدالحليم بدر علي خان حسين علي باش", "generation": 5}, {"id": 157, "father_id": 22, "name": "مهدي", "full_name": "مهدي عبدالحليم بدر علي خان حسين علي باش", "generation": 5}, {"id": 158, "father_id": 22, "name": "سليمان", "full_name": "سليمان عبدالحليم بدر علي خان حسين علي باش", "generation": 5}, {"id": 159, "father_id": 23, "name": "عبدالعزيز", "full_name": "عبدالعزيز سعيد بدر علي خان حسين علي باش", "generation": 5}, {"id": 160, "father_id": 23, "name": "بدر", "full_name": "بدر سعيد بدر علي خان حسين علي باش", "generation": 5}, {"id": 161, "father_id": 62, "name": "عبدالله", "full_name": "عبدالله أسامة عبدالله عيسى يوسف حسين علي باش", "generation": 6}, {"id": 162, "father_id": 62, "name": "عبدالعزيز", "full_name": "عبدالعزيز أسامة عبدالله عيسى يوسف حسين علي باش", "generation": 6}, {"id": 163, "father_id": 63, "name": "يوسف", "full_name": "يوسف احمد يوسف عيسى يوسف حسين علي باش", "generation": 6}, {"id": 164, "father_id": 64, "name": "بشار", "full_name": "بشار عيسى يوسف عيسى يوسف حسين علي باش", "generation": 6}, {"id": 165, "father_id": 66, "name": "سامي", "full_name": "سامي محمد سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 166, "father_id": 66, "name": "يوسف", "full_name": "يوسف محمد سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 167, "father_id": 66, "name": "فيصل", "full_name": "فيصل محمد سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 168, "father_id": 67, "name": "احمد", "full_name": "احمد حسين سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 169, "father_id": 67, "name": "علي", "full_name": "علي حسين سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 170, "father_id": 71, "name": "بدر", "full_name": "بدر ياسر بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 171, "father_id": 71, "name": "علي", "full_name": "علي ياسر بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 172, "father_id": 72, "name": "ناصر", "full_name": "ناصر يوسف بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 173, "father_id": 72, "name": "محمد", "full_name": "محمد يوسف بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 174, "father_id": 74, "name": "عبدالهادي", "full_name": "عبدالهادي علي عبدالهادي ناصر حجي حسين علي باش", "generation": 6}, {"id": 175, "father_id": 77, "name": "محمد", "full_name": "محمد حمزة محمد ناصر حجي حسين علي باش", "generation": 6}, {"id": 176, "father_id": 80, "name": "حسين", "full_name": "حسين علي حسين ناصر حجي حسين علي باش", "generation": 6}, {"id": 177, "father_id": 83, "name": "محمد", "full_name": "محمد جواد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 178, "father_id": 83, "name": "حسين", "full_name": "حسين جواد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 179, "father_id": 83, "name": "علي", "full_name": "علي جواد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 180, "father_id": 84, "name": "مصطفى", "full_name": "مصطفى خالد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 181, "father_id": 84, "name": "عبدالله", "full_name": "عبدالله خالد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 182, "father_id": 85, "name": "محمد", "full_name": "محمد احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 183, "father_id": 85, "name": "مهدي", "full_name": "مهدي احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 184, "father_id": 85, "name": "يوسف", "full_name": "يوسف احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 185, "father_id": 85, "name": "علي", "full_name": "علي احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 186, "father_id": 86, "name": "يعقوب", "full_name": "يعقوب يحيى فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 187, "father_id": 177, "name": "فيصل", "full_name": "فيصل محمد جواد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 188, "father_id": 177, "name": "فهد", "full_name": "فهد محمد جواد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 189, "father_id": 182, "name": "احمد", "full_name": "احمد محمد احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 190, "father_id": 182, "name": "عبدالله", "full_name": "عبدالله محمد احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 191, "father_id": 183, "name": "صالح", "full_name": "صالح مهدي احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 192, "father_id": 184, "name": "فيصل", "full_name": "فيصل يوسف احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 193, "father_id": 150, "name": "بدر", "full_name": "بدر حبيب هلال بدر علي خان حسين علي باش", "generation": 6}, {"id": 194, "father_id": 150, "name": "عبدالعزيز", "full_name": "عبدالعزيز حبيب هلال بدر علي خان حسين علي باش", "generation": 6}, {"id": 195, "father_id": 150, "name": "محمد", "full_name": "محمد حبيب هلال بدر علي خان حسين علي باش", "generation": 6}, {"id": 196, "father_id": 193, "name": "ناصر", "full_name": "ناصر بدر حبيب هلال بدر علي خان حسين علي باش", "generation": 7}, {"id": 197, "father_id": 152, "name": "يوسف", "full_name": "يوسف احمد هلال بدر علي خان حسين علي باش", "generation": 6}, {"id": 198, "father_id": 152, "name": "محمد", "full_name": "محمد احمد هلال بدر علي خان حسين علي باش", "generation": 6}, {"id": 199, "father_id": 153, "name": "فيصل", "full_name": "فيصل عبدالمجيد هلال بدر علي خان حسين علي باش", "generation": 6}, {"id": 200, "father_id": 134, "name": "فاضل", "full_name": "فاضل حسين صادق حسين باشا محمد علي باش", "generation": 6}, {"id": 201, "father_id": 134, "name": "صادق", "full_name": "صادق حسين صادق حسين باشا محمد علي باش", "generation": 6}, {"id": 202, "father_id": 154, "name": "كرار", "full_name": "كرار ميثم عبدالامام بدر علي خان حسين علي باش", "generation": 6}, {"id": 203, "father_id": 21, "name": "علي", "full_name": "علي عبدالامام بدر علي خان حسين علي باش", "generation": 5}];
+const PEOPLE=[{"id": 1, "father_id": null, "name": "علي باش", "full_name": "علي باش", "generation": 0}, {"id": 2, "father_id": 1, "name": "حسين", "full_name": "حسين علي باش", "generation": 1}, {"id": 3, "father_id": 1, "name": "محمد", "full_name": "محمد علي باش", "generation": 1}, {"id": 4, "father_id": 2, "name": "علي خان", "full_name": "علي خان حسين علي باش", "generation": 2}, {"id": 5, "father_id": 2, "name": "يوسف", "full_name": "يوسف حسين علي باش", "generation": 2}, {"id": 6, "father_id": 2, "name": "حجي", "full_name": "حجي حسين علي باش", "generation": 2}, {"id": 7, "father_id": 3, "name": "باشا", "full_name": "باشا محمد علي باش", "generation": 2}, {"id": 8, "father_id": 4, "name": "بدر", "full_name": "بدر علي خان حسين علي باش", "generation": 3}, {"id": 9, "father_id": 4, "name": "محمد", "full_name": "محمد علي خان حسين علي باش", "generation": 3}, {"id": 10, "father_id": 4, "name": "حمود", "full_name": "حمود علي خان حسين علي باش", "generation": 3}, {"id": 11, "father_id": 4, "name": "عبداللطيف", "full_name": "عبداللطيف علي خان حسين علي باش", "generation": 3}, {"id": 12, "father_id": 5, "name": "عيسى", "full_name": "عيسى يوسف حسين علي باش", "generation": 3}, {"id": 13, "father_id": 6, "name": "ناصر", "full_name": "ناصر حجي حسين علي باش", "generation": 3}, {"id": 14, "father_id": 7, "name": "حسن", "full_name": "حسن باشا محمد علي باش", "generation": 3}, {"id": 15, "father_id": 7, "name": "احمد", "full_name": "احمد باشا محمد علي باش", "generation": 3}, {"id": 16, "father_id": 7, "name": "حسين", "full_name": "حسين باشا محمد علي باش", "generation": 3}, {"id": 17, "father_id": 7, "name": "محمد", "full_name": "محمد باشا محمد علي باش", "generation": 3}, {"id": 18, "father_id": 8, "name": "علي خان", "full_name": "علي خان بدر علي خان حسين علي باش", "generation": 4}, {"id": 19, "father_id": 8, "name": "هلال", "full_name": "هلال بدر علي خان حسين علي باش", "generation": 4}, {"id": 20, "father_id": 8, "name": "عبدالامير", "full_name": "عبدالامير بدر علي خان حسين علي باش", "generation": 4}, {"id": 21, "father_id": 8, "name": "عبدالامام", "full_name": "عبدالامام بدر علي خان حسين علي باش", "generation": 4}, {"id": 22, "father_id": 8, "name": "عبدالحليم", "full_name": "عبدالحليم بدر علي خان حسين علي باش", "generation": 4}, {"id": 23, "father_id": 8, "name": "سعيد", "full_name": "سعيد بدر علي خان حسين علي باش", "generation": 4}, {"id": 24, "father_id": 9, "name": "جاسم", "full_name": "جاسم محمد علي خان حسين علي باش", "generation": 4}, {"id": 25, "father_id": 9, "name": "حيدر", "full_name": "حيدر محمد علي خان حسين علي باش", "generation": 4}, {"id": 26, "father_id": 9, "name": "خليل", "full_name": "خليل محمد علي خان حسين علي باش", "generation": 4}, {"id": 27, "father_id": 9, "name": "عبدالرضا", "full_name": "عبدالرضا محمد علي خان حسين علي باش", "generation": 4}, {"id": 28, "father_id": 9, "name": "طالب", "full_name": "طالب محمد علي خان حسين علي باش", "generation": 4}, {"id": 29, "father_id": 10, "name": "فيصل", "full_name": "فيصل حمود علي خان حسين علي باش", "generation": 4}, {"id": 30, "father_id": 10, "name": "صادق", "full_name": "صادق حمود علي خان حسين علي باش", "generation": 4}, {"id": 31, "father_id": 10, "name": "صالح", "full_name": "صالح حمود علي خان حسين علي باش", "generation": 4}, {"id": 32, "father_id": 10, "name": "عبدالعزيز", "full_name": "عبدالعزيز حمود علي خان حسين علي باش", "generation": 4}, {"id": 33, "father_id": 11, "name": "عباس", "full_name": "عباس عبداللطيف علي خان حسين علي باش", "generation": 4}, {"id": 34, "father_id": 11, "name": "فاضل", "full_name": "فاضل عبداللطيف علي خان حسين علي باش", "generation": 4}, {"id": 35, "father_id": 11, "name": "مصطفى", "full_name": "مصطفى عبداللطيف علي خان حسين علي باش", "generation": 4}, {"id": 36, "father_id": 12, "name": "عبدالله", "full_name": "عبدالله عيسى يوسف حسين علي باش", "generation": 4}, {"id": 37, "father_id": 12, "name": "يوسف", "full_name": "يوسف عيسى يوسف حسين علي باش", "generation": 4}, {"id": 38, "father_id": 12, "name": "سامي", "full_name": "سامي عيسى يوسف حسين علي باش", "generation": 4}, {"id": 39, "father_id": 12, "name": "نبيل", "full_name": "نبيل عيسى يوسف حسين علي باش", "generation": 4}, {"id": 40, "father_id": 12, "name": "محمد", "full_name": "محمد عيسى يوسف حسين علي باش", "generation": 4}, {"id": 41, "father_id": 12, "name": "علي", "full_name": "علي عيسى يوسف حسين علي باش", "generation": 4}, {"id": 42, "father_id": 13, "name": "بدر", "full_name": "بدر ناصر حجي حسين علي باش", "generation": 4}, {"id": 43, "father_id": 13, "name": "عبدالهادي", "full_name": "عبدالهادي ناصر حجي حسين علي باش", "generation": 4}, {"id": 44, "father_id": 13, "name": "محمد", "full_name": "محمد ناصر حجي حسين علي باش", "generation": 4}, {"id": 45, "father_id": 13, "name": "حسين", "full_name": "حسين ناصر حجي حسين علي باش", "generation": 4}, {"id": 46, "father_id": 15, "name": "يوسف", "full_name": "يوسف احمد باشا محمد علي باش", "generation": 4}, {"id": 47, "father_id": 15, "name": "جواد", "full_name": "جواد احمد باشا محمد علي باش", "generation": 4}, {"id": 48, "father_id": 15, "name": "علي", "full_name": "علي احمد باشا محمد علي باش", "generation": 4}, {"id": 49, "father_id": 15, "name": "عبدالصاحب", "full_name": "عبدالصاحب احمد باشا محمد علي باش", "generation": 4}, {"id": 50, "father_id": 15, "name": "محمد", "full_name": "محمد احمد باشا محمد علي باش", "generation": 4}, {"id": 51, "father_id": 16, "name": "علي", "full_name": "علي حسين باشا محمد علي باش", "generation": 4}, {"id": 52, "father_id": 16, "name": "صادق", "full_name": "صادق حسين باشا محمد علي باش", "generation": 4}, {"id": 53, "father_id": 16, "name": "عقيل", "full_name": "عقيل حسين باشا محمد علي باش", "generation": 4}, {"id": 54, "father_id": 17, "name": "باشا", "full_name": "باشا محمد باشا محمد علي باش", "generation": 4}, {"id": 55, "father_id": 17, "name": "عبدالمحسن", "full_name": "عبدالمحسن محمد باشا محمد علي باش", "generation": 4}, {"id": 56, "father_id": 17, "name": "عبدالمجيد", "full_name": "عبدالمجيد محمد باشا محمد علي باش", "generation": 4}, {"id": 57, "father_id": 17, "name": "عبدالرسول", "full_name": "عبدالرسول محمد باشا محمد علي باش", "generation": 4}, {"id": 58, "father_id": 17, "name": "بدر", "full_name": "بدر محمد باشا محمد علي باش", "generation": 4}, {"id": 59, "father_id": 17, "name": "عبدالحميد", "full_name": "عبدالحميد محمد باشا محمد علي باش", "generation": 4}, {"id": 60, "father_id": 17, "name": "منصور", "full_name": "منصور محمد باشا محمد علي باش", "generation": 4}, {"id": 61, "father_id": 17, "name": "ايمن", "full_name": "ايمن محمد باشا محمد علي باش", "generation": 4}, {"id": 62, "father_id": 36, "name": "أسامة", "full_name": "أسامة عبدالله عيسى يوسف حسين علي باش", "generation": 5}, {"id": 63, "father_id": 37, "name": "احمد", "full_name": "احمد يوسف عيسى يوسف حسين علي باش", "generation": 5}, {"id": 64, "father_id": 37, "name": "عيسى", "full_name": "عيسى يوسف عيسى يوسف حسين علي باش", "generation": 5}, {"id": 65, "father_id": 37, "name": "سليمان", "full_name": "سليمان يوسف عيسى يوسف حسين علي باش", "generation": 5}, {"id": 66, "father_id": 38, "name": "محمد", "full_name": "محمد سامي عيسى يوسف حسين علي باش", "generation": 5}, {"id": 67, "father_id": 38, "name": "حسين", "full_name": "حسين سامي عيسى يوسف حسين علي باش", "generation": 5}, {"id": 68, "father_id": 40, "name": "جاسم", "full_name": "جاسم محمد عيسى يوسف حسين علي باش", "generation": 5}, {"id": 69, "father_id": 40, "name": "عبدالعزيز", "full_name": "عبدالعزيز محمد عيسى يوسف حسين علي باش", "generation": 5}, {"id": 70, "father_id": 40, "name": "عبدالله", "full_name": "عبدالله محمد عيسى يوسف حسين علي باش", "generation": 5}, {"id": 71, "father_id": 42, "name": "ياسر", "full_name": "ياسر بدر ناصر حجي حسين علي باش", "generation": 5}, {"id": 72, "father_id": 42, "name": "يوسف", "full_name": "يوسف بدر ناصر حجي حسين علي باش", "generation": 5}, {"id": 73, "father_id": 42, "name": "مصطفى", "full_name": "مصطفى بدر ناصر حجي حسين علي باش", "generation": 5}, {"id": 74, "father_id": 43, "name": "علي", "full_name": "علي عبدالهادي ناصر حجي حسين علي باش", "generation": 5}, {"id": 75, "father_id": 43, "name": "عمار", "full_name": "عمار عبدالهادي ناصر حجي حسين علي باش", "generation": 5}, {"id": 76, "father_id": 43, "name": "احمد", "full_name": "احمد عبدالهادي ناصر حجي حسين علي باش", "generation": 5}, {"id": 77, "father_id": 44, "name": "حمزة", "full_name": "حمزة محمد ناصر حجي حسين علي باش", "generation": 5}, {"id": 78, "father_id": 44, "name": "حسين", "full_name": "حسين محمد ناصر حجي حسين علي باش", "generation": 5}, {"id": 79, "father_id": 44, "name": "ناصر", "full_name": "ناصر محمد ناصر حجي حسين علي باش", "generation": 5}, {"id": 80, "father_id": 45, "name": "علي", "full_name": "علي حسين ناصر حجي حسين علي باش", "generation": 5}, {"id": 81, "father_id": 45, "name": "سلمان", "full_name": "سلمان حسين ناصر حجي حسين علي باش", "generation": 5}, {"id": 82, "father_id": 29, "name": "غازي", "full_name": "غازي فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 83, "father_id": 29, "name": "جواد", "full_name": "جواد فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 84, "father_id": 29, "name": "خالد", "full_name": "خالد فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 85, "father_id": 29, "name": "احمد", "full_name": "احمد فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 86, "father_id": 29, "name": "يحيى", "full_name": "يحيى فيصل حمود علي خان حسين علي باش", "generation": 5}, {"id": 87, "father_id": 30, "name": "بشار", "full_name": "بشار صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 88, "father_id": 30, "name": "حمود", "full_name": "حمود صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 89, "father_id": 30, "name": "محمد", "full_name": "محمد صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 90, "father_id": 30, "name": "علي", "full_name": "علي صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 91, "father_id": 30, "name": "حسين", "full_name": "حسين صادق حمود علي خان حسين علي باش", "generation": 5}, {"id": 92, "father_id": 32, "name": "حسين", "full_name": "حسين عبدالعزيز حمود علي خان حسين علي باش", "generation": 5}, {"id": 93, "father_id": 32, "name": "احمد", "full_name": "احمد عبدالعزيز حمود علي خان حسين علي باش", "generation": 5}, {"id": 94, "father_id": 32, "name": "علي", "full_name": "علي عبدالعزيز حمود علي خان حسين علي باش", "generation": 5}, {"id": 95, "father_id": 24, "name": "عبدالامير", "full_name": "عبدالامير جاسم محمد علي خان حسين علي باش", "generation": 5}, {"id": 96, "father_id": 24, "name": "أنور", "full_name": "أنور جاسم محمد علي خان حسين علي باش", "generation": 5}, {"id": 97, "father_id": 24, "name": "محمد", "full_name": "محمد جاسم محمد علي خان حسين علي باش", "generation": 5}, {"id": 98, "father_id": 25, "name": "مصطفى", "full_name": "مصطفى حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 99, "father_id": 25, "name": "احمد", "full_name": "احمد حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 100, "father_id": 25, "name": "علي", "full_name": "علي حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 101, "father_id": 25, "name": "عبدالله", "full_name": "عبدالله حيدر محمد علي خان حسين علي باش", "generation": 5}, {"id": 102, "father_id": 26, "name": "عبدالعزيز", "full_name": "عبدالعزيز خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 103, "father_id": 26, "name": "هاني", "full_name": "هاني خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 104, "father_id": 26, "name": "صالح", "full_name": "صالح خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 105, "father_id": 26, "name": "حسين", "full_name": "حسين خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 106, "father_id": 26, "name": "محمد", "full_name": "محمد خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 107, "father_id": 26, "name": "عبدالله", "full_name": "عبدالله خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 108, "father_id": 26, "name": "يوسف", "full_name": "يوسف خليل محمد علي خان حسين علي باش", "generation": 5}, {"id": 109, "father_id": 28, "name": "علي", "full_name": "علي طالب محمد علي خان حسين علي باش", "generation": 5}, {"id": 110, "father_id": 33, "name": "عبداللطيف", "full_name": "عبداللطيف عباس عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 111, "father_id": 33, "name": "بدر", "full_name": "بدر عباس عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 112, "father_id": 33, "name": "حمود", "full_name": "حمود عباس عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 113, "father_id": 34, "name": "محمد", "full_name": "محمد فاضل عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 114, "father_id": 34, "name": "عبداللطيف", "full_name": "عبداللطيف فاضل عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 115, "father_id": 34, "name": "عبدالله", "full_name": "عبدالله فاضل عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 116, "father_id": 35, "name": "ياسر", "full_name": "ياسر مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 117, "father_id": 35, "name": "احمد", "full_name": "احمد مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 118, "father_id": 35, "name": "محمد", "full_name": "محمد مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 119, "father_id": 35, "name": "عبداللطيف", "full_name": "عبداللطيف مصطفى عبداللطيف علي خان حسين علي باش", "generation": 5}, {"id": 120, "father_id": 46, "name": "عادل", "full_name": "عادل يوسف احمد باشا محمد علي باش", "generation": 5}, {"id": 121, "father_id": 46, "name": "عدنان", "full_name": "عدنان يوسف احمد باشا محمد علي باش", "generation": 5}, {"id": 122, "father_id": 46, "name": "داوود", "full_name": "داوود يوسف احمد باشا محمد علي باش", "generation": 5}, {"id": 123, "father_id": 47, "name": "محمد", "full_name": "محمد جواد احمد باشا محمد علي باش", "generation": 5}, {"id": 124, "father_id": 47, "name": "احمد", "full_name": "احمد جواد احمد باشا محمد علي باش", "generation": 5}, {"id": 125, "father_id": 47, "name": "حسن", "full_name": "حسن جواد احمد باشا محمد علي باش", "generation": 5}, {"id": 126, "father_id": 48, "name": "محمد", "full_name": "محمد علي احمد باشا محمد علي باش", "generation": 5}, {"id": 127, "father_id": 48, "name": "عبدالله", "full_name": "عبدالله علي احمد باشا محمد علي باش", "generation": 5}, {"id": 128, "father_id": 48, "name": "مصطفى", "full_name": "مصطفى علي احمد باشا محمد علي باش", "generation": 5}, {"id": 129, "father_id": 48, "name": "عباس", "full_name": "عباس علي احمد باشا محمد علي باش", "generation": 5}, {"id": 130, "father_id": 48, "name": "احمد", "full_name": "احمد علي احمد باشا محمد علي باش", "generation": 5}, {"id": 131, "father_id": 49, "name": "احمد", "full_name": "احمد عبدالصاحب احمد باشا محمد علي باش", "generation": 5}, {"id": 132, "father_id": 49, "name": "علي", "full_name": "علي عبدالصاحب احمد باشا محمد علي باش", "generation": 5}, {"id": 133, "father_id": 49, "name": "عبدالله", "full_name": "عبدالله عبدالصاحب احمد باشا محمد علي باش", "generation": 5}, {"id": 134, "father_id": 52, "name": "حسين", "full_name": "حسين صادق حسين باشا محمد علي باش", "generation": 5}, {"id": 135, "father_id": 54, "name": "عبدالصمد", "full_name": "عبدالصمد باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 136, "father_id": 54, "name": "نبيل", "full_name": "نبيل باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 137, "father_id": 54, "name": "خالد", "full_name": "خالد باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 138, "father_id": 54, "name": "وليد", "full_name": "وليد باشا محمد باشا محمد علي باش", "generation": 5}, {"id": 139, "father_id": 56, "name": "عبدالله", "full_name": "عبدالله عبدالمجيد محمد باشا محمد علي باش", "generation": 5}, {"id": 140, "father_id": 56, "name": "محمد", "full_name": "محمد عبدالمجيد محمد باشا محمد علي باش", "generation": 5}, {"id": 141, "father_id": 57, "name": "فهد", "full_name": "فهد عبدالرسول محمد باشا محمد علي باش", "generation": 5}, {"id": 142, "father_id": 57, "name": "عبدالله", "full_name": "عبدالله عبدالرسول محمد باشا محمد علي باش", "generation": 5}, {"id": 143, "father_id": 18, "name": "حسين", "full_name": "حسين علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 144, "father_id": 18, "name": "عبدالرسول", "full_name": "عبدالرسول علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 145, "father_id": 18, "name": "عبدالنبي", "full_name": "عبدالنبي علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 146, "father_id": 18, "name": "عبدالمجيد", "full_name": "عبدالمجيد علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 147, "father_id": 18, "name": "عادل", "full_name": "عادل علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 148, "father_id": 18, "name": "عدنان", "full_name": "عدنان علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 149, "father_id": 18, "name": "ناقص", "full_name": "ناقص علي خان بدر علي خان حسين علي باش", "generation": 5}, {"id": 150, "father_id": 19, "name": "ناقص", "full_name": "ناقص هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 151, "father_id": 19, "name": "عبدالهادي", "full_name": "عبدالهادي هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 152, "father_id": 19, "name": "احمد", "full_name": "احمد هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 153, "father_id": 19, "name": "عبدالمجيد", "full_name": "عبدالمجيد هلال بدر علي خان حسين علي باش", "generation": 5}, {"id": 154, "father_id": 21, "name": "ميثم", "full_name": "ميثم عبدالامام بدر علي خان حسين علي باش", "generation": 5}, {"id": 155, "father_id": 21, "name": "مقداد", "full_name": "مقداد عبدالامام بدر علي خان حسين علي باش", "generation": 5}, {"id": 156, "father_id": 22, "name": "محمد", "full_name": "محمد عبدالحليم بدر علي خان حسين علي باش", "generation": 5}, {"id": 157, "father_id": 22, "name": "مهدي", "full_name": "مهدي عبدالحليم بدر علي خان حسين علي باش", "generation": 5}, {"id": 158, "father_id": 22, "name": "سليمان", "full_name": "سليمان عبدالحليم بدر علي خان حسين علي باش", "generation": 5}, {"id": 159, "father_id": 23, "name": "عبدالعزيز", "full_name": "عبدالعزيز سعيد بدر علي خان حسين علي باش", "generation": 5}, {"id": 160, "father_id": 23, "name": "بدر", "full_name": "بدر سعيد بدر علي خان حسين علي باش", "generation": 5}, {"id": 161, "father_id": 62, "name": "عبدالله", "full_name": "عبدالله أسامة عبدالله عيسى يوسف حسين علي باش", "generation": 6}, {"id": 162, "father_id": 62, "name": "عبدالعزيز", "full_name": "عبدالعزيز أسامة عبدالله عيسى يوسف حسين علي باش", "generation": 6}, {"id": 163, "father_id": 63, "name": "يوسف", "full_name": "يوسف احمد يوسف عيسى يوسف حسين علي باش", "generation": 6}, {"id": 164, "father_id": 64, "name": "بشار", "full_name": "بشار عيسى يوسف عيسى يوسف حسين علي باش", "generation": 6}, {"id": 165, "father_id": 66, "name": "سامي", "full_name": "سامي محمد سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 166, "father_id": 66, "name": "يوسف", "full_name": "يوسف محمد سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 167, "father_id": 66, "name": "فيصل", "full_name": "فيصل محمد سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 168, "father_id": 67, "name": "احمد", "full_name": "احمد حسين سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 169, "father_id": 67, "name": "علي", "full_name": "علي حسين سامي عيسى يوسف حسين علي باش", "generation": 6}, {"id": 170, "father_id": 71, "name": "بدر", "full_name": "بدر ياسر بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 171, "father_id": 71, "name": "علي", "full_name": "علي ياسر بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 172, "father_id": 72, "name": "ناصر", "full_name": "ناصر يوسف بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 173, "father_id": 72, "name": "محمد", "full_name": "محمد يوسف بدر ناصر حجي حسين علي باش", "generation": 6}, {"id": 174, "father_id": 74, "name": "عبدالهادي", "full_name": "عبدالهادي علي عبدالهادي ناصر حجي حسين علي باش", "generation": 6}, {"id": 175, "father_id": 77, "name": "محمد", "full_name": "محمد حمزة محمد ناصر حجي حسين علي باش", "generation": 6}, {"id": 176, "father_id": 80, "name": "حسين", "full_name": "حسين علي حسين ناصر حجي حسين علي باش", "generation": 6}, {"id": 177, "father_id": 83, "name": "محمد", "full_name": "محمد جواد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 178, "father_id": 83, "name": "حسين", "full_name": "حسين جواد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 179, "father_id": 83, "name": "علي", "full_name": "علي جواد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 180, "father_id": 84, "name": "مصطفى", "full_name": "مصطفى خالد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 181, "father_id": 84, "name": "عبدالله", "full_name": "عبدالله خالد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 182, "father_id": 85, "name": "محمد", "full_name": "محمد احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 183, "father_id": 85, "name": "مهدي", "full_name": "مهدي احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 184, "father_id": 85, "name": "يوسف", "full_name": "يوسف احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 185, "father_id": 85, "name": "علي", "full_name": "علي احمد فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 186, "father_id": 86, "name": "يعقوب", "full_name": "يعقوب يحيى فيصل حمود علي خان حسين علي باش", "generation": 6}, {"id": 187, "father_id": 177, "name": "فيصل", "full_name": "فيصل محمد جواد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 188, "father_id": 177, "name": "فهد", "full_name": "فهد محمد جواد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 189, "father_id": 182, "name": "احمد", "full_name": "احمد محمد احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 190, "father_id": 182, "name": "عبدالله", "full_name": "عبدالله محمد احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 191, "father_id": 183, "name": "صالح", "full_name": "صالح مهدي احمد فيصل حمود علي خان حسين علي باش", "generation": 7}, {"id": 192, "father_id": 184, "name": "فيصل", "full_name": "فيصل يوسف احمد فيصل حمود علي خان حسين علي باش", "generation": 7}];
 
 // ── PALETTE ──
-const GEN_COLORS = ['#C49000','#3634A3','#1B7D40','#8944AB','#CC3A30','#0E7490','#C05600','#6B7280'];
-const GEN_FILLS  = ['#FFF8E1','#EEF0FF','#E8F8EE','#F5EDFF','#FFEFED','#E6FAFE','#FFF3E8','#F3F4F6'];
+const GEN_COLORS = ['#C49000','#3634A3','#1B7D40','#8944AB','#CC3A30','#0E7490','#C05600'];
+const GEN_FILLS  = ['#FFF8E1','#EEF0FF','#E8F8EE','#F5EDFF','#FFEFED','#E6FAFE','#FFF3E8'];
 const GEN_LBL = ['الجد المؤسس','الجيل الأول','الجيل الثاني','الجيل الثالث','الجيل الرابع','الجيل الخامس','الجيل السادس','الجيل السابع'];
 
 const pMap={},cMap={};
@@ -1091,7 +1011,7 @@ function drawTree(ctx,cw,ch,ox,oy,sc){
   PEOPLE.forEach(p=>{
     if(!p.father_id)return;
     const f=pos[p.father_id],t=pos[p.id];
-    const gen=Math.min(p.generation||0,7);
+    const gen=Math.min(p.generation||0,6);
     const color=GEN_COLORS[gen];
     const fx=(f.x-ox)*sc,fy=(f.y+H-oy)*sc;
     const tx=(t.x-ox)*sc,ty=(t.y-oy)*sc;
@@ -1118,7 +1038,7 @@ function drawTree(ctx,cw,ch,ox,oy,sc){
   // Nodes
   PEOPLE.forEach(p=>{
     const{x,y}=pos[p.id];
-    const gen=Math.min(p.generation||0,7);
+    const gen=Math.min(p.generation||0,6);
     const color=GEN_COLORS[gen];
     const fill=GEN_FILLS[gen];
     const sx=(x-W/2-ox)*sc,sy=(y-oy)*sc,sw=W*sc,sh=H*sc,r=12*sc;
@@ -1157,14 +1077,14 @@ function drawTree(ctx,cw,ch,ox,oy,sc){
     ctx.beginPath();ctx.moveTo(sx+r*0.4,accentY);ctx.lineTo(sx+r*0.4,accentY+accentH);
     ctx.strokeStyle=rgba(color,0.55);ctx.lineWidth=2.8*sc;ctx.lineCap='round';ctx.stroke();ctx.lineCap='butt';
 
-    // Text - always show
-    if(sc>0.03){
-      const fs=Math.max(6,Math.min(14*sc,15));
+    // Text
+    if(sc>0.04){
+      const fs=Math.max(8,Math.min(14*sc,15));
       ctx.font=`700 ${fs}px Tajawal,sans-serif`;
       ctx.fillStyle=rgba(color,1);
       ctx.textAlign='center';ctx.textBaseline='middle';
       ctx.save();roundRect(ctx,sx+3,sy+1,sw-6,sh-2,r);ctx.clip();
-      ctx.fillText(p.name,sx+sw/2,sy+sh/2);ctx.restore();
+      ctx.fillText(p.name,sx+sw/2,sy+sh/2,sw-20*sc);ctx.restore();
     }
 
     // Children count badge
@@ -1256,7 +1176,7 @@ function drawSplash(){
   const edges=[[1,2],[1,3],[2,4],[2,5],[2,6],[3,7]];
   edges.forEach(([fid,tid])=>{
     const f=splashNodes[fid],t=splashNodes[tid];
-    const p=pMap[tid];const gen=Math.min(p.generation||0,7);
+    const p=pMap[tid];const gen=Math.min(p.generation||0,6);
     const color=GEN_COLORS[gen];
     const fx=(f.x-sOx)*sSc,fy=(f.y+sh0-sOy)*sSc;
     const tx=(t.x-sOx)*sSc,ty=(t.y-sOy)*sSc;
@@ -1268,7 +1188,7 @@ function drawSplash(){
   // Nodes
   ids.forEach(id=>{
     const nd=splashNodes[id];
-    const p=pMap[id];const gen=Math.min(p.generation||0,7);
+    const p=pMap[id];const gen=Math.min(p.generation||0,6);
     const color=GEN_COLORS[gen];const fill=GEN_FILLS[gen];
     const nodeSW=nd.sw||baseSW;
     const sx=(nd.x-nodeSW/2-sOx)*sSc,sy=(nd.y-sOy)*sSc;
@@ -1324,7 +1244,7 @@ function initSplash(){
       const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(d<10)return;
       const mx=(e.touches[0].clientX+e.touches[1].clientX)/2,my=(e.touches[0].clientY+e.touches[1].clientY)/2-56;
       const wx=sOx+sPinchMx/sSc,wy=sOy+sPinchMy/sSc;
-      const f=d/sPinchDist;sSc=Math.max(0.1,Math.min(5,sSc*f));
+      const f=Math.max(0.92,Math.min(1.08,d/sPinchDist));sSc=Math.max(0.1,Math.min(5,sSc*f));
       sOx=wx-mx/sSc;sOy=wy-my/sSc;sPinchDist=d;sPinchMx=mx;sPinchMy=my;drawSplash();
     }
   },{passive:false});
@@ -1334,12 +1254,11 @@ function initSplash(){
 }
 
 function goToFull(){
-  closeAllPages();
   document.getElementById('splash').classList.add('hide');
   document.getElementById('app').classList.add('show');
   setTimeout(()=>{
     document.getElementById('splash').style.display='none';
-    resizeMain();initView();draw();
+    resizeMain();initView();
   },400);
 }
 
@@ -1358,9 +1277,8 @@ function draw(){drawTree(ctx,cw,ch,ox,oy,sc);}
 
 function initView(){
   cw=wrap.clientWidth||window.innerWidth;ch=wrap.clientHeight||(window.innerHeight-56);
-  // Start at a readable scale, centered on root
-  sc=Math.min(cw/(W*12), ch/((H+VG)*3));
-  sc=Math.max(0.5, Math.min(sc,2.5));
+  const targetW=stW(1)*1.1,targetH=(H+VG+H)*1.6;
+  sc=Math.min(cw/targetW,ch/targetH);sc=Math.max(0.3,Math.min(sc,2.5));
   ox=pos[1].x-(cw/sc)/2;oy=pos[1].y-(ch/sc)*0.15;draw();
 }
 
@@ -1388,19 +1306,16 @@ window.addEventListener('mouseup',e=>{
 });
 
 let t1x,t1y,t1ox,t1oy,pinchDist=null,pinchMx,pinchMy,touchMoved=false;
-let _drawRAF=null;
-function drawThrottled(){if(!_drawRAF){_drawRAF=requestAnimationFrame(()=>{draw();_drawRAF=null;});}}
-
 canvas.addEventListener('touchstart',e=>{e.preventDefault();touchMoved=false;if(momentumFrame){cancelAnimationFrame(momentumFrame);momentumFrame=null;}
   if(e.touches.length===1){dragging=true;t1x=e.touches[0].clientX;t1y=e.touches[0].clientY;t1ox=ox;t1oy=oy;velX=0;velY=0;}
   else if(e.touches.length===2){dragging=false;pinchDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);pinchMx=(e.touches[0].clientX+e.touches[1].clientX)/2;pinchMy=(e.touches[0].clientY+e.touches[1].clientY)/2-56;}
 },{passive:false});
 canvas.addEventListener('touchmove',e=>{e.preventDefault();touchMoved=true;
-  if(e.touches.length===1&&dragging){ox=t1ox-(e.touches[0].clientX-t1x)/sc;oy=t1oy-(e.touches[0].clientY-t1y)/sc;drawThrottled();}
+  if(e.touches.length===1&&dragging){ox=t1ox-(e.touches[0].clientX-t1x)/sc;oy=t1oy-(e.touches[0].clientY-t1y)/sc;draw();}
   else if(e.touches.length===2&&pinchDist){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(d<10)return;
     const mx=(e.touches[0].clientX+e.touches[1].clientX)/2,my=(e.touches[0].clientY+e.touches[1].clientY)/2-56;
-    const wx=ox+pinchMx/sc,wy=oy+pinchMy/sc;const f=d/pinchDist;sc=Math.max(0.08,Math.min(5,sc*f));
-    ox=wx-mx/sc;oy=wy-my/sc;pinchDist=d;pinchMx=mx;pinchMy=my;drawThrottled();}
+    const wx=ox+pinchMx/sc,wy=oy+pinchMy/sc;const f=Math.max(0.92,Math.min(1.08,d/pinchDist));sc=Math.max(0.08,Math.min(5,sc*f));
+    ox=wx-mx/sc;oy=wy-my/sc;pinchDist=d;pinchMx=mx;pinchMy=my;draw();}
 },{passive:false});
 canvas.addEventListener('touchend',e=>{e.preventDefault();
   if(!touchMoved&&e.changedTouches.length===1){const t=e.changedTouches[0];const id=hitTest(t.clientX,t.clientY-56);if(id)showInfo(id);else closeInfo();}
@@ -1412,13 +1327,13 @@ canvas.addEventListener('wheel',e=>{e.preventDefault();let d=e.deltaY;if(e.delta
 },{passive:false});
 
 function btnZoom(f){const wx=ox+cw/2/sc,wy=oy+ch/2/sc;const ns=Math.max(0.04,Math.min(4,sc*f));animateTo(wx-cw/2/ns,wy-ch/2/ns,ns,300);}
-function resetView(){let ts=Math.min(cw/(W*12),ch/((H+VG)*3));ts=Math.max(0.5,Math.min(ts,2.5));animateTo(pos[1].x-(cw/ts)/2,pos[1].y-(ch/ts)*0.15,ts,500);}
+function resetView(){const tw=stW(1)*1.1,th=(H+VG+H)*1.6;let ts=Math.min(cw/tw,ch/th);ts=Math.max(0.3,Math.min(ts,2.5));animateTo(pos[1].x-(cw/ts)/2,pos[1].y-(ch/ts)*0.15,ts,500);}
 function centerOn(id){const p=pos[id];if(!p)return;animateTo(p.x+W/2-cw/2/sc,p.y+H/2-ch/2/sc,sc,400);}
 
 // ── INFO PANEL ──
 function showInfo(id){
   highlightId=id;
-  const p=pMap[id];const gen=Math.min(p.generation||0,7);const color=GEN_COLORS[gen];
+  const p=pMap[id];const gen=Math.min(p.generation||0,6);const color=GEN_COLORS[gen];
   document.getElementById('ip-nm').textContent=p.name;
   document.getElementById('ip-nm').style.color=color;
   document.getElementById('ip-gen').textContent=GEN_LBL[gen];
@@ -1433,7 +1348,7 @@ function showInfo(id){
   document.getElementById('ip-hd-bg').style.borderBottom='1px solid '+rgba(color,0.1);
   const kids=[...(cMap[id]||[])].reverse();const kEl=document.getElementById('ip-kids');kEl.innerHTML='';
   if(kids.length){kids.forEach(cid=>{const btn=document.createElement('div');btn.className='ip-kid';btn.textContent=pMap[cid].name;
-    const cGen=Math.min(pMap[cid].generation||0,7);btn.style.borderColor=rgba(GEN_COLORS[cGen],0.15);
+    const cGen=Math.min(pMap[cid].generation||0,6);btn.style.borderColor=rgba(GEN_COLORS[cGen],0.15);
     btn.onclick=()=>{showInfo(cid);centerOn(cid);};kEl.appendChild(btn);});
     document.getElementById('kids-sec').style.display='';}else document.getElementById('kids-sec').style.display='none';
   document.getElementById('info-panel').style.display='block';
@@ -1455,7 +1370,7 @@ sIn.addEventListener('input',()=>{
   }).slice(0,10);
   if(!res.length){sDrop.style.display='none';return;}
   sDrop.innerHTML=res.map(p=>{let full='',cur=p;while(cur){full+=(full?' '+cur.name:cur.name);cur=cur.father_id?pMap[cur.father_id]:null;}
-    const gen=Math.min(p.generation||0,7);const color=GEN_COLORS[gen];
+    const gen=Math.min(p.generation||0,6);const color=GEN_COLORS[gen];
     return`<div class="si" onclick="pickSearch(${p.id})"><div class="si-name" style="color:${color}">${p.name}</div><div class="si-full">${full}</div></div>`;
   }).join('');sDrop.style.display='block';
 });
@@ -1463,27 +1378,11 @@ function pickSearch(id){sIn.value='';sDrop.style.display='none';showInfo(id);}
 document.addEventListener('click',e=>{if(!e.target.closest('#search-wrap')&&!e.target.closest('#search-drop'))sDrop.style.display='none';});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInfo();if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();sIn.focus();}});
 
-function closeAllPages(){
-  // Close app/full tree
-  document.getElementById('app').classList.remove('show');
-  // Close explore
-  const ex=document.getElementById('explore');ex.classList.remove('show');ex.style.display='';
-  document.getElementById('explore-nav').classList.remove('show');
-  // Close collapsible tree
-  const ct=document.getElementById('ctree');ct.classList.remove('show');ct.style.display='';
-  document.getElementById('ct-nav').classList.remove('show');
-  try{ctCloseInfo();}catch(e){}
-  // Close interactive tree
-  const it=document.getElementById('itree');it.classList.remove('show');it.style.display='';
-  document.getElementById('it-nav').classList.remove('show');
-  // Close info panel
-  try{closeInfo();}catch(e){}
-}
-
 function goToSplash(){
-  closeAllPages();
+  document.getElementById('app').classList.remove('show');
   document.getElementById('splash').style.display='';
   document.getElementById('splash').classList.remove('hide');
+  setTimeout(()=>{document.getElementById('app').style.pointerEvents='none';document.getElementById('app').style.opacity='0';},50);
   sCw=window.innerWidth;sCh=window.innerHeight-56;
   sCanvas.width=sCw*DPR;sCanvas.height=sCh*DPR;
   sCanvas.style.width=sCw+'px';sCanvas.style.height=sCh+'px';
@@ -1499,26 +1398,23 @@ function toggleMenu(){
 
 // ══════ EXPLORE PAGE ══════
 function goToExplore(){
-  closeAllPages();
-  document.getElementById('splash').classList.add('hide');
-  setTimeout(()=>{document.getElementById('splash').style.display='none';},400);
-  const el=document.getElementById('explore');
-  el.style.display='block';
-  requestAnimationFrame(()=>{
-    el.classList.add('show');
-    document.getElementById('explore-nav').classList.add('show');
-    el.scrollTop=0;
-  });
+  document.getElementById('explore').classList.add('show');
+  document.getElementById('explore-nav').classList.add('show');
+  document.getElementById('explore').scrollTop=0;
+  // Hide splash if visible
+  const sp=document.getElementById('splash');
+  if(sp&&!sp.classList.contains('hide')){sp.classList.add('hide');setTimeout(()=>sp.style.display='none',800);}
+  // Init explore content
   if(!window._exploreInited){
     window._exploreInited=true;
-    setTimeout(()=>initExplore(),100);
+    initExplore();
   }
 }
 function closeExplore(){
-  closeAllPages();
-  document.getElementById('splash').style.display='';
-  document.getElementById('splash').classList.remove('hide');
-  setTimeout(()=>{initSplashView();drawSplash();},100);
+  const el=document.getElementById('explore');
+  el.style.opacity='0';
+  setTimeout(()=>{el.classList.remove('show');el.style.opacity='';},500);
+  document.getElementById('explore-nav').classList.remove('show');
 }
 
 function initExplore(){
@@ -1528,14 +1424,13 @@ function initExplore(){
   function getChain(id){const chain=[];let cur=pMap[id];while(cur){chain.push(cur);cur=cur.father_id?pMap[cur.father_id]:null;}return chain;}
   function isUnder(pid,bid){let cur=pMap[pid];while(cur){if(cur.id===bid)return true;cur=cur.father_id?pMap[cur.father_id]:null;}return false;}
   
-  const genCounts=[0,0,0,0,0,0,0,0];
+  const genCounts=[0,0,0,0,0,0,0];
   PEOPLE.forEach(p=>genCounts[p.generation]++);
   const maxGC=Math.max(...genCounts);
   const hCount=PEOPLE.filter(p=>p.id!==1&&isUnder(p.id,2)).length;
   const mCount=PEOPLE.filter(p=>p.id!==1&&isUnder(p.id,3)).length;
-  let maxK=0,maxKP=null;PEOPLE.forEach(p=>{const k=(cMap[p.id]||[]).length;if(k>maxK){maxK=k;maxKP=p;}});
-  const maxKN=maxKP?maxKP.full_name:'';
-  let deepL=0;PEOPLE.forEach(p=>{if(p.generation>deepL)deepL=p.generation;});
+  let maxK=0,maxKN='';PEOPLE.forEach(p=>{const k=(cMap[p.id]||[]).length;if(k>maxK){maxK=k;maxKN=p.name;}});
+  let deepL=0;PEOPLE.forEach(p=>{const ch=getChain(p.id);if(ch.length>deepL)deepL=ch.length;});
   
   // Gen chart
   const gc=document.getElementById('gen-chart');
@@ -1548,85 +1443,9 @@ function initExplore(){
   const br=document.getElementById('branches');
   br.innerHTML=`<div class="branch-card"><div class="branch-icon" style="background:${GEN_FILLS[1]};color:${GEN_COLORS[1]}">🏛️</div><div class="branch-name" style="color:${GEN_COLORS[1]}">فرع حسين</div><div class="branch-stat" style="color:${GEN_COLORS[1]}">${hCount}</div><div class="branch-desc">الفرع الأكبر — يضم غالبية أفراد العائلة عبر أجيال متعددة.</div></div><div class="branch-card"><div class="branch-icon" style="background:${GEN_FILLS[2]};color:${GEN_COLORS[2]}">🌿</div><div class="branch-name" style="color:${GEN_COLORS[2]}">فرع محمد</div><div class="branch-stat" style="color:${GEN_COLORS[2]}">${mCount}</div><div class="branch-desc">فرع محمد علي باش — يمتد عبر باشا وأبنائه الأربعة.</div></div>`;
   
-  // Records - enriched stats
+  // Records
   const rc=document.getElementById('records');
-  const fatherCount=PEOPLE.filter(p=>(cMap[p.id]||[]).length>0).length;
-  const noKidsCount=PEOPLE.filter(p=>(cMap[p.id]||[]).length===0).length;
-  const avgKids=(PEOPLE.filter(p=>(cMap[p.id]||[]).length>0).reduce((s,p)=>s+(cMap[p.id]||[]).length,0)/fatherCount).toFixed(1);
-  
-  // Most common names
-  const nameFreq={};PEOPLE.forEach(p=>{const n=p.name;nameFreq[n]=(nameFreq[n]||0)+1;});
-  const topNames=Object.entries(nameFreq).sort((a,b)=>b[1]-a[1]).slice(0,6);
-  
-  // Top 5 fathers
-  const topFathers=PEOPLE.filter(p=>(cMap[p.id]||[]).length>0).sort((a,b)=>(cMap[b.id]||[]).length-(cMap[a.id]||[]).length).slice(0,5);
-  
-  rc.innerHTML=`
-    <div class="record-card"><div class="record-emoji">👨‍👦‍👦</div><div class="record-value">${maxK}</div><div class="record-label">أكثر أبناء — ${maxKN}</div></div>
-    <div class="record-card"><div class="record-emoji">📏</div><div class="record-value">${deepL}</div><div class="record-label">عدد الأجيال</div></div>
-    <div class="record-card"><div class="record-emoji">👨</div><div class="record-value">${fatherCount}</div><div class="record-label">عدد الآباء (من لديهم أبناء)</div></div>
-    <div class="record-card"><div class="record-emoji">📊</div><div class="record-value">${avgKids}</div><div class="record-label">متوسط عدد الأبناء لكل أب</div></div>
-    <div class="record-card"><div class="record-emoji">🌱</div><div class="record-value">${noKidsCount}</div><div class="record-label">أفراد بدون أبناء مسجلين</div></div>
-    <div class="record-card"><div class="record-emoji">🏛️</div><div class="record-value">2</div><div class="record-label">الفروع الرئيسية</div></div>
-  `;
-  
-  const recordsParent=rc.parentElement;
-  
-  // Top Names section
-  const namesSection=document.createElement('div');
-  namesSection.style.cssText='margin-top:48px;';
-  namesSection.innerHTML='<h3 style="font-size:20px;font-weight:800;text-align:center;margin-bottom:20px;color:var(--text)">الأسماء الأكثر تكراراً</h3><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:500px;margin:0 auto;">'+topNames.map((n,i)=>'<div style="text-align:center;padding:16px 12px;background:var(--surface);border-radius:14px;border:1px solid var(--glass-border);"><div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">'+(i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1))+'</div><div style="font-size:18px;font-weight:800;color:var(--text);">'+n[0]+'</div><div style="font-size:13px;color:var(--text-dim);margin-top:2px;">'+n[1]+' مرة</div></div>').join('')+'</div>';
-  recordsParent.appendChild(namesSection);
-  
-  // Top Fathers section - full name only
-  const fathersSection=document.createElement('div');
-  fathersSection.style.cssText='margin-top:48px;';
-  fathersSection.innerHTML='<h3 style="font-size:20px;font-weight:800;text-align:center;margin-bottom:20px;color:var(--text)">أكثر الآباء أبناءً</h3><div style="display:flex;flex-direction:column;gap:10px;max-width:500px;margin:0 auto;">'+topFathers.map((p,i)=>{const k=(cMap[p.id]||[]).length;const g=Math.min(p.generation,7);return'<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--surface);border-radius:14px;border:1px solid var(--glass-border);"><div style="display:flex;align-items:center;gap:12px;"><span style="font-size:18px;font-weight:900;color:var(--text-muted);width:24px;">'+(i+1)+'</span><div style="font-size:14px;font-weight:700;color:'+GEN_COLORS[g]+';">'+p.full_name+'</div></div><div style="font-size:22px;font-weight:900;color:'+GEN_COLORS[g]+';">'+k+'</div></div>';}).join('')+'</div>';
-  recordsParent.appendChild(fathersSection);
-  
-  // Branch Comparison Table
-  const hFathers=PEOPLE.filter(p=>(cMap[p.id]||[]).length>0&&p.id!==1&&isUnder(p.id,2)).length;
-  const mFathers=PEOPLE.filter(p=>(cMap[p.id]||[]).length>0&&p.id!==1&&isUnder(p.id,3)).length;
-  const hMaxGen=Math.max(...PEOPLE.filter(p=>isUnder(p.id,2)).map(p=>p.generation));
-  const mMaxGen=Math.max(...PEOPLE.filter(p=>isUnder(p.id,3)).map(p=>p.generation));
-  const hAvg=hFathers?(PEOPLE.filter(p=>isUnder(p.id,2)&&(cMap[p.id]||[]).length>0).reduce((s,p)=>s+(cMap[p.id]||[]).length,0)/hFathers).toFixed(1):'0';
-  const mAvg=mFathers?(PEOPLE.filter(p=>isUnder(p.id,3)&&(cMap[p.id]||[]).length>0).reduce((s,p)=>s+(cMap[p.id]||[]).length,0)/mFathers).toFixed(1):'0';
-  const hNoKids=PEOPLE.filter(p=>isUnder(p.id,2)&&(cMap[p.id]||[]).length===0).length;
-  const mNoKids=PEOPLE.filter(p=>isUnder(p.id,3)&&(cMap[p.id]||[]).length===0).length;
-  const hPct=((hCount/(hCount+mCount))*100).toFixed(0);
-  const mPct=((mCount/(hCount+mCount))*100).toFixed(0);
-  
-  const compRows=[
-    ['إجمالي الذرية',hCount,mCount],
-    ['عدد الآباء',hFathers,mFathers],
-    ['عدد الأجيال',hMaxGen,mMaxGen],
-    ['متوسط الأبناء لكل أب',hAvg,mAvg],
-    ['أفراد بدون أبناء',hNoKids,mNoKids],
-    ['النسبة من إجمالي العائلة',hPct+'%',mPct+'%']
-  ];
-  
-  const compSection=document.createElement('div');
-  compSection.style.cssText='margin-top:48px;';
-  let compHtml='<h3 style="font-size:20px;font-weight:800;text-align:center;margin-bottom:20px;color:var(--text)">مقارنة بين الفروع الرئيسية</h3>';
-  compHtml+='<div style="max-width:560px;margin:0 auto;background:var(--surface);border-radius:20px;border:1px solid var(--glass-border);overflow:hidden;">';
-  // Header
-  compHtml+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;padding:16px 12px;border-bottom:1.5px solid var(--glass-border);background:rgba(0,0,0,0.015);">';
-  compHtml+='<div style="font-size:12px;font-weight:600;color:var(--text-muted);">البيان</div>';
-  compHtml+='<div style="font-size:13px;font-weight:800;color:'+GEN_COLORS[1]+';">فرع حسين</div>';
-  compHtml+='<div style="font-size:13px;font-weight:800;color:'+GEN_COLORS[2]+';">فرع محمد</div>';
-  compHtml+='</div>';
-  // Rows
-  compRows.forEach((row,i)=>{
-    const bg=i%2===0?'transparent':'rgba(0,0,0,0.015)';
-    compHtml+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;padding:14px 12px;border-bottom:1px solid var(--glass-border);background:'+bg+';">';
-    compHtml+='<div style="font-size:13px;font-weight:600;color:var(--text-dim);">'+row[0]+'</div>';
-    compHtml+='<div style="font-size:16px;font-weight:900;color:'+GEN_COLORS[1]+';">'+row[1]+'</div>';
-    compHtml+='<div style="font-size:16px;font-weight:900;color:'+GEN_COLORS[2]+';">'+row[2]+'</div>';
-    compHtml+='</div>';
-  });
-  compHtml+='</div>';
-  compSection.innerHTML=compHtml;
-  recordsParent.appendChild(compSection);
+  rc.innerHTML=`<div class="record-card"><div class="record-emoji">👨‍👦‍👦</div><div class="record-value">${maxK}</div><div class="record-label">أكثر أبناء — ${maxKN}</div></div><div class="record-card"><div class="record-emoji">📏</div><div class="record-value">${deepL}</div><div class="record-label">أطول سلسلة نسب (أجيال)</div></div><div class="record-card"><div class="record-emoji">🌱</div><div class="record-value">${genCounts[7]}</div><div class="record-label">أفراد الجيل السابع</div></div>`;
   
   // Timeline
   const tl=document.getElementById('timeline');
@@ -1704,30 +1523,16 @@ function initExplore(){
 
 
 // ── INIT ──
-window.addEventListener('resize',()=>{
-  resizeMain();draw();
-  // Also resize CT canvas if visible
-  if(document.getElementById('ctree').classList.contains('show')){
-    ctResize();ctDraw();
-  }
-});
-window.addEventListener('orientationchange',()=>{
-  setTimeout(()=>{
-    resizeMain();draw();
-    if(document.getElementById('ctree').classList.contains('show')){
-      ctResize();ctDraw();
-    }
-  },300);
-});
+window.addEventListener('resize',()=>{resizeMain();draw();});
 initSplash();
 </script>
 
 <!-- ═══ EXPLORE PAGE ═══ -->
 <div id="explore-nav">
   <div class="enav-inner">
-    <button class="hdr-menu-btn" onclick="toggleMenu()"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    <span class="enav-title">استكشف العائلة</span>
-    <span style="width:36px"></span>
+    <button class="enav-link" onclick="closeExplore()">→ العودة للشجرة</button>
+    <span class="enav-title">عائلة علي باش</span>
+    <span style="width:100px"></span>
   </div>
 </div>
 <div id="explore">
@@ -1735,9 +1540,9 @@ initSplash();
 <div class="hero">
   <div class="hero-eyebrow">شجرة عائلة</div>
   <h1 class="hero-title">علي باش</h1>
-  <p class="hero-subtitle">ست أجيال من التاريخ والإرث العائلي.<br>203 فرداً يشكّلون هذه الشجرة العريقة.</p>
+  <p class="hero-subtitle">ست أجيال من التاريخ والإرث العائلي.<br>١٩٢ فرداً يشكّلون هذه الشجرة العريقة.</p>
   <div class="stats-row">
-    <div class="stat-item"><div class="stat-number" data-target="203">0</div><div class="stat-label">فرد</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="192">0</div><div class="stat-label">فرد</div></div>
     <div class="stat-item"><div class="stat-number" data-target="8">0</div><div class="stat-label">أجيال</div></div>
     <div class="stat-item"><div class="stat-number" data-target="2">0</div><div class="stat-label">فرع رئيسي</div></div>
   </div>
@@ -1802,69 +1607,23 @@ initSplash();
 <div class="cta-section">
   <div class="reveal">
     <h2 class="section-title">استكشف الشجرة الكاملة.</h2>
-    <p class="section-desc" style="margin:16px auto 0">شاهد جميع الـ 203 فرداً في الشجرة التفاعلية.</p>
-    
+    <p class="section-desc" style="margin:16px auto 0">شاهد جميع الـ ١٩٢ فرداً في الشجرة التفاعلية.</p>
+    <button class="cta-btn" onclick="closeExplore()">العودة للشجرة الكاملة</button>
   </div>
 </div>
 
-<footer>عائلة علي باش · ٧ أجيال · مارس ٢٠٢٦ · v1.7.2</footer>
+<footer>عائلة علي باش · ٧ أجيال · مارس ٢٠٢٦</footer>
 </div>
 
 
 
-
-<!-- ═══ COLLAPSIBLE TREE ═══ -->
-<div id="ct-nav">
-  <div class="ctnav-in">
-    <button class="hdr-menu-btn" onclick="toggleMenu()"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    <span class="ctnav-title">شجرة قابلة للطي</span>
-    <div id="ct-search-wrap" style="position:relative;">
-      <input type="text" id="ct-search" placeholder="بحث..." autocomplete="off" style="font-family:'Tajawal',sans-serif;font-size:13px;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.06);border-radius:10px;padding:8px 14px 8px 32px;color:var(--text);width:200px;outline:none;text-align:right;-webkit-appearance:none;transition:all 0.2s;">
-      <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--text-muted);pointer-events:none;">⌘</span>
-      <div id="ct-search-drop" style="display:none;position:absolute;top:100%;right:0;width:260px;margin-top:6px;background:var(--surface);border:1px solid var(--glass-border);border-radius:14px;max-height:240px;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:10;"></div>
-    </div>
-  </div>
-</div>
-<div id="ctree">
-  <div id="ct-canvas-wrap"><canvas id="ct-c"></canvas></div>
-  <div id="ct-info" style="position:fixed;top:72px;left:16px;z-index:480;background:var(--surface);border:1px solid var(--glass-border);border-radius:20px;width:min(330px,calc(100vw - 32px));display:none;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.1);animation:panelIn 0.4s cubic-bezier(0.16,1,0.3,1) both;">
-    <div id="ct-info-hd" style="padding:20px 20px 16px;position:relative;">
-      <button onclick="ctCloseInfo()" style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.04);border:none;color:var(--text-dim);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;">✕</button>
-      <div id="ct-info-name" style="font-size:24px;font-weight:900;letter-spacing:-0.02em;"></div>
-      <div id="ct-info-gen" style="display:inline-block;font-size:11px;font-weight:600;padding:4px 12px;border-radius:980px;margin-top:6px;"></div>
-    </div>
-    <div style="padding:0 20px 20px;">
-      <div id="ct-info-chain" style="font-size:13px;color:var(--text-dim);line-height:1.8;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid rgba(0,0,0,0.05);font-weight:500;text-align:right;"></div>
-      <div id="ct-info-kids-sec">
-        <div style="font-size:10px;font-weight:700;color:var(--text-muted);letter-spacing:0.12em;margin-bottom:8px;">الأبناء</div>
-        <div id="ct-info-kids" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
-      </div>
-    </div>
-  </div>
-  <div id="ct-controls">
-    <button class="ct-ctrl" onclick="ctZoom(1.35)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-    <button class="ct-ctrl" onclick="ctReset()"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 2v1M8 13v1M2 8h1M13 8h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-    <button class="ct-ctrl" onclick="ctZoom(0.74)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-  </div>
-  <div id="ct-legend">
-    <div class="ct-leg-hd">الأجيال</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen0)"></div>الجد المؤسس</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen1)"></div>الجيل الأول</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen2)"></div>الجيل الثاني</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen3)"></div>الجيل الثالث</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen4)"></div>الجيل الرابع</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen5)"></div>الجيل الخامس</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen6)"></div>الجيل السادس</div>
-    <div class="ct-leg-r"><div class="ct-leg-sw" style="background:var(--gen7)"></div>الجيل السابع</div>
-  </div>
-</div>
 
 <!-- ═══ INTERACTIVE TREE ═══ -->
 <div id="it-nav">
   <div class="itnav-in">
-    <button class="hdr-menu-btn" onclick="toggleMenu()"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    <button class="itnav-link" onclick="closeITree()">→ العودة</button>
     <span class="itnav-title">شجرة تفاعلية</span>
-    <span style="width:36px"></span>
+    <span style="width:80px"></span>
   </div>
 </div>
 <div id="itree">
@@ -1887,26 +1646,20 @@ initSplash();
 let _itreeBuilt=false;
 
 function goToITree(){
-  closeAllPages();
-  document.getElementById('splash').classList.add('hide');
-  setTimeout(()=>{document.getElementById('splash').style.display='none';},400);
-  const el=document.getElementById('itree');
-  el.style.display='block';
-  requestAnimationFrame(()=>{
-    el.classList.add('show');
-    document.getElementById('it-nav').classList.add('show');
-    el.scrollTop=0;
-  });
+  document.getElementById('itree').classList.add('show');
+  document.getElementById('it-nav').classList.add('show');
+  document.getElementById('itree').scrollTop=0;
+  // Always rebuild fresh (all closed)
   _itreeBuilt=false;
   document.getElementById('it-root').innerHTML='';
   _itreeBuilt=true;
-  setTimeout(()=>buildITree(),50);
+  buildITree();
 }
 function closeITree(){
-  closeAllPages();
-  document.getElementById('splash').style.display='';
-  document.getElementById('splash').classList.remove('hide');
-  setTimeout(()=>{initSplashView();drawSplash();},100);
+  const el=document.getElementById('itree');
+  el.style.opacity='0';
+  setTimeout(()=>{el.classList.remove('show');el.style.opacity='';},500);
+  document.getElementById('it-nav').classList.remove('show');
 }
 
 function buildITree(){
@@ -2093,7 +1846,7 @@ if(localStorage.getItem('darkMode')==='1'){
     if(!res.length){itR.style.display='none';return;}
     itR.innerHTML=res.map(p=>{
       let full='',cur=p;while(cur){full+=(full?' '+cur.name:cur.name);cur=cur.father_id?pMap[cur.father_id]:null;}
-      const g=Math.min(p.generation||0,7);
+      const g=Math.min(p.generation||0,6);
       return '<div style="padding:12px 16px;cursor:pointer;border-bottom:1px solid var(--glass-border);transition:background 0.15s;text-align:right;" onmouseover="this.style.background=\'var(--surface-hover)\'" onmouseout="this.style.background=\'\'" onclick="itSearchPick('+p.id+')"><div style="font-size:14px;font-weight:700;color:'+GEN_COLORS[g]+'">'+p.name+'</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">'+full+'</div></div>';
     }).join('');
     itR.style.display='block';
@@ -2138,394 +1891,5 @@ function itSearchPick(id){
   },400);
 }
 </script>
-
-<script>
-// ══ COLLAPSIBLE TREE ══
-const ctCanvas=document.getElementById('ct-c');
-const ctCtx=ctCanvas.getContext('2d');
-const ctWrap=document.getElementById('ct-canvas-wrap');
-let ctW,ctH,ctOx=0,ctOy=0,ctSc=1;
-const expanded=new Set();
-const ctPos={};
-
-// Initially expand root + gen1 + gen2 parents
-function ctInitExpanded(){
-  expanded.clear();
-  PEOPLE.forEach(p=>{
-    if(p.generation<=2) expanded.add(p.id);
-  });
-  ctBuildVisible();
-}
-
-// Pre-compute visible set for performance
-const ctVisible=new Set();
-function ctBuildVisible(){
-  ctVisible.clear();
-  function addVis(id, parentExpanded){
-    const p=pMap[id];
-    const gen=p.generation;
-    // Gen 0-3 always visible; beyond that only if parent is expanded
-    if(gen<=3 || parentExpanded){
-      ctVisible.add(id);
-      const isExp=expanded.has(id) || gen<3;
-      (cMap[id]||[]).forEach(cid=>addVis(cid, isExp));
-    }
-  }
-  addVis(1, true);
-}
-
-function ctHasHiddenKids(id){
-  const kids=cMap[id]||[];
-  if(!kids.length) return false;
-  return !expanded.has(id) && pMap[id].generation>=3;
-}
-
-// Layout with caching
-const ctSizeCache={};
-function ctStW(id){
-  if(ctSizeCache[id]!==undefined) return ctSizeCache[id];
-  const ch=(cMap[id]||[]).filter(c=>ctVisible.has(c));
-  const w=ch.length?Math.max(W,ch.reduce((s,c,i)=>s+ctStW(c)+(i?HG:0),0)):W;
-  ctSizeCache[id]=w;
-  return w;
-}
-
-function ctLayout(id,x,y){
-  ctPos[id]={x,y};
-  const ch=(cMap[id]||[]).filter(c=>ctVisible.has(c));
-  if(!ch.length) return;
-  let tot=ch.reduce((s,c,i)=>s+ctStW(c)+(i?HG:0),0);
-  let cx=x-tot/2;
-  ch.forEach(c=>{const sw=ctStW(c);ctLayout(c,cx+sw/2,y+H+VG);cx+=sw+HG;});
-}
-
-function ctRelayout(){
-  // Clear cache and rebuild
-  for(const k in ctSizeCache) delete ctSizeCache[k];
-  ctBuildVisible();
-  ctLayout(1,0,0);
-}
-
-function ctResize(){
-  ctW=window.innerWidth;
-  ctH=window.innerHeight-52;
-  ctCanvas.width=ctW*DPR;ctCanvas.height=ctH*DPR;
-  ctCanvas.style.width=ctW+'px';ctCanvas.style.height=ctH+'px';
-  ctCtx.setTransform(DPR,0,0,DPR,0,0);
-}
-
-function ctInitView(){
-  ctResize();
-  const tw=ctStW(1)*1.1;
-  ctSc=Math.min(ctW/(W*12), ctH/((H+VG)*3));
-  ctSc=Math.max(0.5, Math.min(ctSc, 2.5));
-  ctOx=ctPos[1].x-(ctW/ctSc)/2;
-  ctOy=ctPos[1].y-(ctH/ctSc)*0.15;
-}
-
-function ctDraw(){
-  ctCtx.clearRect(0,0,ctW,ctH);
-  ctCtx.fillStyle=getComputedStyle(document.body).getPropertyValue('--bg').trim();
-  ctCtx.fillRect(0,0,ctW,ctH);
-  
-  // Dot pattern
-  const dotC=document.body.classList.contains('dark')?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.04)';
-  const dotS=30*ctSc;if(dotS>4){const startX=(-ctOx*ctSc)%dotS,startY=(-ctOy*ctSc)%dotS;ctCtx.fillStyle=dotC;for(let x=startX;x<ctW;x+=dotS)for(let y=startY;y<ctH;y+=dotS){ctCtx.beginPath();ctCtx.arc(x,y,0.8,0,Math.PI*2);ctCtx.fill();}}
-
-  // Gen lines
-  for(let g=0;g<=7;g++){
-    const ly=(g*(H+VG)-ctOy)*ctSc;
-    if(ly>-20&&ly<ctH+20){
-      ctCtx.strokeStyle=rgba(GEN_COLORS[Math.min(g,7)],0.08);
-      ctCtx.lineWidth=1;ctCtx.beginPath();ctCtx.moveTo(0,ly+H*ctSc+15*ctSc);ctCtx.lineTo(ctW,ly+H*ctSc+15*ctSc);ctCtx.stroke();
-    }
-  }
-
-  // Connections
-  const visiblePeople=PEOPLE.filter(p=>ctVisible.has(p.id));
-  visiblePeople.forEach(p=>{
-    if(!p.father_id||!ctVisible.has(p.father_id)) return;
-    const fp=ctPos[p.father_id],cp=ctPos[p.id];
-    if(!fp||!cp) return;
-    const fx=(fp.x-ctOx)*ctSc,fy=(fp.y+H-ctOy)*ctSc;
-    const tx=(cp.x-ctOx)*ctSc,ty=(cp.y-ctOy)*ctSc;
-    const my=(fy+ty)/2;
-    const gen=Math.min(p.generation||0,7);
-    ctCtx.beginPath();ctCtx.moveTo(fx,fy);ctCtx.lineTo(fx,my);ctCtx.lineTo(tx,my);ctCtx.lineTo(tx,ty);
-    ctCtx.strokeStyle=rgba(GEN_COLORS[gen],0.25);ctCtx.lineWidth=1.2;ctCtx.stroke();
-  });
-
-  // Nodes
-  visiblePeople.forEach(p=>{
-    const cp=ctPos[p.id];if(!cp) return;
-    const gen=Math.min(p.generation||0,7);
-    const color=GEN_COLORS[gen];const fill=GEN_FILLS[gen];
-    const sx=(cp.x-W/2-ctOx)*ctSc,sy=(cp.y-ctOy)*ctSc,sw=W*ctSc,sh=H*ctSc,r=12*ctSc;
-    
-    if(sx+sw<-10||sx>ctW+10||sy+sh<-10||sy>ctH+10) return;
-
-    const hasHidden=ctHasHiddenKids(p.id);
-
-    // Shadow
-    ctCtx.shadowColor='rgba(0,0,0,0.06)';ctCtx.shadowBlur=8*ctSc;ctCtx.shadowOffsetY=3*ctSc;
-    
-    // Card
-    roundRect(ctCtx,sx,sy,sw,sh,r);
-    ctCtx.fillStyle=fill;ctCtx.fill();
-    ctCtx.strokeStyle=rgba(color, hasHidden?0.6:0.25);
-    ctCtx.lineWidth=hasHidden?2:1.2;
-    ctCtx.stroke();
-    ctCtx.shadowColor='transparent';ctCtx.shadowBlur=0;ctCtx.shadowOffsetY=0;
-
-    // Accent bar
-    const aH=sh*0.45,aY=sy+(sh-aH)/2;
-    ctCtx.beginPath();ctCtx.moveTo(sx+r*0.4,aY);ctCtx.lineTo(sx+r*0.4,aY+aH);
-    ctCtx.strokeStyle=rgba(color,0.55);ctCtx.lineWidth=2.8*ctSc;ctCtx.lineCap='round';ctCtx.stroke();ctCtx.lineCap='butt';
-
-    // Text
-    if(ctSc>0.03){
-      const fs=Math.max(6,Math.min(14*ctSc,15));
-      ctCtx.font='700 '+fs+'px Tajawal,sans-serif';
-      ctCtx.fillStyle=rgba(color,1);
-      ctCtx.textAlign='center';ctCtx.textBaseline='middle';
-      ctCtx.save();roundRect(ctCtx,sx+3,sy+1,sw-6,sh-2,r);ctCtx.clip();
-      ctCtx.fillText(p.name,sx+sw/2,sy+sh/2);ctCtx.restore();
-    }
-
-    // Badge (kid count)
-    const kids=(cMap[p.id]||[]).length;
-    if(kids>0&&ctSc>0.06){
-      const bsz=9*ctSc;
-      const bx=sx+sw-bsz-4*ctSc,by=sy-bsz+2*ctSc;
-      ctCtx.beginPath();ctCtx.arc(bx+bsz,by+bsz,bsz,0,Math.PI*2);
-      ctCtx.fillStyle=color;ctCtx.fill();
-      const bfs=Math.max(6,Math.min(8*ctSc,9));
-      ctCtx.font='800 '+bfs+'px Tajawal,sans-serif';
-      ctCtx.fillStyle=document.body.classList.contains('dark')?'#F2F2F7':'#FFF';
-      ctCtx.textAlign='center';ctCtx.textBaseline='middle';
-      ctCtx.fillText(kids,bx+bsz,by+bsz);
-    }
-  });
-}
-
-// Click handler - expand/collapse
-function ctHitTest(sx,sy){
-  const wx=ctOx+sx/ctSc,wy=ctOy+sy/ctSc;
-  const vis=PEOPLE.filter(p=>ctVisible.has(p.id));
-  for(let i=vis.length-1;i>=0;i--){
-    const p=vis[i],cp=ctPos[p.id];
-    if(!cp) continue;
-    if(wx>=cp.x-W/2&&wx<=cp.x+W/2&&wy>=cp.y&&wy<=cp.y+H) return p.id;
-  }
-  return null;
-}
-
-// CT unified touch/mouse handling
-let ctDrag=false,ctDragX,ctDragY,ctMoved;
-let ctT1x,ctT1y,ctT1ox,ctT1oy,ctPinch=false,ctPinchDist,ctPinchMx,ctPinchMy,ctTouchMoved=false;
-let _ctDrawRAF=null;
-function ctDrawThrottled(){if(!_ctDrawRAF){_ctDrawRAF=requestAnimationFrame(()=>{ctDraw();_ctDrawRAF=null;});}}
-
-function ctHandleClick(sx,sy){
-  const id=ctHitTest(sx,sy);
-  if(id){
-    const kids=cMap[id]||[];
-    if(kids.length){
-      if(expanded.has(id)){
-        const toRemove=[id];
-        for(let i=0;i<toRemove.length;i++){(cMap[toRemove[i]]||[]).forEach(cid=>toRemove.push(cid));}
-        toRemove.forEach(pid=>expanded.delete(pid));
-      }else{expanded.add(id);}
-      const cp=ctPos[id];
-      const sx2=cp?(cp.x-ctOx)*ctSc:0,sy2=cp?(cp.y-ctOy)*ctSc:0;
-      requestAnimationFrame(()=>{ctRelayout();if(ctPos[id]){ctOx=ctPos[id].x-sx2/ctSc;ctOy=ctPos[id].y-sy2/ctSc;}ctDraw();});
-    }
-  }
-}
-
-// Mouse (desktop)
-ctCanvas.addEventListener('mousedown',e=>{ctDrag=true;ctDragX=e.clientX;ctDragY=e.clientY;ctMoved=false;});
-window.addEventListener('mousemove',e=>{if(!ctDrag)return;const dx=e.clientX-ctDragX,dy=e.clientY-ctDragY;if(Math.abs(dx)>3||Math.abs(dy)>3)ctMoved=true;ctOx-=dx/ctSc;ctOy-=dy/ctSc;ctDragX=e.clientX;ctDragY=e.clientY;ctDrawThrottled();});
-window.addEventListener('mouseup',e=>{if(!ctDrag)return;ctDrag=false;if(!ctMoved){const rect=ctCanvas.getBoundingClientRect();ctHandleClick(e.clientX-rect.left,e.clientY-rect.top);}});
-
-// Touch (mobile)
-ctCanvas.addEventListener('touchstart',e=>{e.preventDefault();ctTouchMoved=false;
-  if(e.touches.length===1){ctDrag=true;ctPinch=false;ctT1x=e.touches[0].clientX;ctT1y=e.touches[0].clientY;ctT1ox=ctOx;ctT1oy=ctOy;}
-  else if(e.touches.length===2){ctDrag=false;ctPinch=true;const t=e.touches;ctPinchDist=Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);const rect=ctCanvas.getBoundingClientRect();ctPinchMx=(t[0].clientX+t[1].clientX)/2-rect.left;ctPinchMy=(t[0].clientY+t[1].clientY)/2-rect.top;}
-},{passive:false});
-ctCanvas.addEventListener('touchmove',e=>{e.preventDefault();ctTouchMoved=true;
-  if(e.touches.length===1&&ctDrag&&!ctPinch){ctOx=ctT1ox-(e.touches[0].clientX-ctT1x)/ctSc;ctOy=ctT1oy-(e.touches[0].clientY-ctT1y)/ctSc;ctDrawThrottled();}
-  else if(e.touches.length===2&&ctPinch){const t=e.touches;const d=Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);if(d<10)return;
-    const rect=ctCanvas.getBoundingClientRect();const mx=(t[0].clientX+t[1].clientX)/2-rect.left,my=(t[0].clientY+t[1].clientY)/2-rect.top;
-    const wx=ctOx+ctPinchMx/ctSc,wy=ctOy+ctPinchMy/ctSc;const f=d/ctPinchDist;ctSc=Math.max(0.08,Math.min(5,ctSc*f));
-    ctOx=wx-mx/ctSc;ctOy=wy-my/ctSc;ctPinchDist=d;ctPinchMx=mx;ctPinchMy=my;ctDrawThrottled();}
-},{passive:false});
-ctCanvas.addEventListener('touchend',e=>{e.preventDefault();
-  if(!ctTouchMoved&&e.changedTouches.length===1){const t=e.changedTouches[0];const rect=ctCanvas.getBoundingClientRect();ctHandleClick(t.clientX-rect.left,t.clientY-rect.top);}
-  if(e.touches.length===0){ctDrag=false;ctPinch=false;}
-  else if(e.touches.length===1){ctDrag=true;ctPinch=false;ctT1x=e.touches[0].clientX;ctT1y=e.touches[0].clientY;ctT1ox=ctOx;ctT1oy=ctOy;}
-},{passive:false});
-
-// Mouse wheel zoom
-ctCanvas.addEventListener('wheel',e=>{
-  e.preventDefault();const d=e.deltaY;const f=Math.pow(0.997,d);
-  const wx=ctOx+e.offsetX/ctSc,wy=ctOy+e.offsetY/ctSc;
-  ctSc=Math.max(0.04,Math.min(4,ctSc*f));
-  ctOx=wx-e.offsetX/ctSc;ctOy=wy-e.offsetY/ctSc;ctDraw();
-},{passive:false});
-
-function ctZoom(f){const cx=ctOx+ctW/ctSc/2,cy=ctOy+ctH/ctSc/2;ctSc=Math.max(0.04,Math.min(4,ctSc*f));ctOx=cx-ctW/ctSc/2;ctOy=cy-ctH/ctSc/2;ctDraw();}
-function ctReset(){ctInitExpanded();ctRelayout();ctInitView();ctDraw();}
-
-function goToCTree(){
-  closeAllPages();
-  document.getElementById('splash').classList.add('hide');
-  setTimeout(()=>{document.getElementById('splash').style.display='none';},400);
-  const el=document.getElementById('ctree');
-  el.style.display='block';
-  requestAnimationFrame(()=>{
-    el.classList.add('show');
-    document.getElementById('ct-nav').classList.add('show');
-  });
-  setTimeout(()=>{ctInitExpanded();ctRelayout();ctInitView();ctDraw();},50);
-}
-function closeCTree(){
-  closeAllPages();
-  document.getElementById('splash').style.display='';
-  document.getElementById('splash').classList.remove('hide');
-  setTimeout(()=>{initSplashView();drawSplash();},100);
-}
-
-// ══ CT SEARCH ══
-const ctSIn=document.getElementById('ct-search');
-const ctSDrop=document.getElementById('ct-search-drop');
-if(ctSIn){
-  ctSIn.addEventListener('focus',()=>{ctSIn.style.background='var(--surface)';ctSIn.style.borderColor='rgba(0,0,0,0.1)';ctSIn.style.boxShadow='0 0 0 4px rgba(94,92,230,0.1)';});
-  ctSIn.addEventListener('blur',()=>{setTimeout(()=>{ctSIn.style.background='';ctSIn.style.borderColor='';ctSIn.style.boxShadow='';},200);});
-  ctSIn.addEventListener('input',()=>{
-    const q=ctSIn.value.trim();if(!q){ctSDrop.style.display='none';return;}
-    const parts=q.split(' ').filter(Boolean);
-    const res=PEOPLE.filter(p=>{
-      if(!p.name.startsWith(parts[0]))return false;
-      if(parts.length===1)return true;
-      let full='',cur=p;while(cur){full+=(full?' '+cur.name:cur.name);cur=cur.father_id?pMap[cur.father_id]:null;}
-      let idx=0;for(const part of parts){const found=full.indexOf(part,idx);if(found===-1)return false;idx=found+part.length;}return true;
-    }).slice(0,8);
-    if(!res.length){ctSDrop.style.display='none';return;}
-    ctSDrop.innerHTML=res.map(p=>{
-      let full='',cur=p;while(cur){full+=(full?' '+cur.name:cur.name);cur=cur.father_id?pMap[cur.father_id]:null;}
-      const g=Math.min(p.generation||0,7);
-      return'<div style="padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--glass-border);text-align:right;" onmouseover="this.style.background=\'var(--surface-hover)\'" onmouseout="this.style.background=\'\'" onclick="ctSearchPick('+p.id+')"><div style="font-size:13px;font-weight:700;color:'+GEN_COLORS[g]+'">'+p.name+'</div><div style="font-size:10px;color:var(--text-muted);margin-top:1px;">'+full+'</div></div>';
-    }).join('');
-    ctSDrop.style.display='block';
-  });
-  document.addEventListener('click',e=>{if(!e.target.closest('#ct-search-wrap'))ctSDrop.style.display='none';});
-}
-
-function ctSearchPick(id){
-  ctSIn.value='';ctSDrop.style.display='none';
-  // Expand all ancestors
-  let cur=pMap[id];
-  while(cur.father_id){
-    if(pMap[cur.father_id].generation>=3) expanded.add(cur.father_id);
-    cur=pMap[cur.father_id];
-  }
-  ctRelayout();
-  // Center on person
-  if(ctPos[id]){
-    ctOx=ctPos[id].x-ctW/ctSc/2;
-    ctOy=ctPos[id].y-ctH/ctSc/2+H;
-  }
-  ctDraw();
-  // Show info
-  setTimeout(()=>ctShowInfo(id),300);
-}
-
-// ══ CT LONG PRESS → INFO PANEL (touch-based) ══
-let ctLongTimer=null,ctLongId=null;
-
-// Integrate long press into touch start/move/end
-ctCanvas.addEventListener('touchstart',e=>{
-  if(e.touches.length===1){
-    const rect=ctCanvas.getBoundingClientRect();
-    const hid=ctHitTest(e.touches[0].clientX-rect.left,e.touches[0].clientY-rect.top);
-    if(hid){
-      ctLongId=hid;
-      ctLongTimer=setTimeout(()=>{
-        ctLongTimer=null;
-        ctTouchMoved=true;
-        ctShowInfo(ctLongId);
-      },500);
-    }
-  }else{if(ctLongTimer){clearTimeout(ctLongTimer);ctLongTimer=null;}}
-},{passive:true});
-ctCanvas.addEventListener('touchmove',()=>{if(ctLongTimer&&ctTouchMoved){clearTimeout(ctLongTimer);ctLongTimer=null;}},{passive:true});
-ctCanvas.addEventListener('touchend',()=>{if(ctLongTimer){clearTimeout(ctLongTimer);ctLongTimer=null;}},{passive:true});
-
-// Desktop: right-click for info
-ctCanvas.addEventListener('contextmenu',e=>{
-  e.preventDefault();
-  const rect=ctCanvas.getBoundingClientRect();
-  const id=ctHitTest(e.clientX-rect.left,e.clientY-rect.top);
-  if(id) ctShowInfo(id);
-});
-
-function ctShowInfo(id){
-  const p=pMap[id];const gen=Math.min(p.generation||0,7);const color=GEN_COLORS[gen];
-  document.getElementById('ct-info-name').textContent=p.name;
-  document.getElementById('ct-info-name').style.color=color;
-  document.getElementById('ct-info-gen').textContent=GEN_LBL[gen];
-  document.getElementById('ct-info-gen').style.color=color;
-  document.getElementById('ct-info-gen').style.background=rgba(color,0.08);
-  document.getElementById('ct-info-hd').style.borderBottom='1px solid '+rgba(color,0.1);
-  
-  let chain='',cur2=p;
-  while(cur2){chain+=(chain?' '+cur2.name:cur2.name);cur2=cur2.father_id?pMap[cur2.father_id]:null;}
-  document.getElementById('ct-info-chain').textContent=chain;
-  
-  const kids=[...(cMap[id]||[])].reverse();
-  const kEl=document.getElementById('ct-info-kids');kEl.innerHTML='';
-  if(kids.length){
-    kids.forEach(cid=>{
-      const cp=pMap[cid];const cg=Math.min(cp.generation||0,7);
-      const btn=document.createElement('div');
-      btn.className='ip-kid';
-      btn.style.borderColor=rgba(GEN_COLORS[cg],0.15);
-      btn.textContent=cp.name;
-      btn.onclick=()=>{
-        // Expand ancestors so this person is visible
-        let anc=pMap[cid];
-        while(anc.father_id){
-          if(pMap[anc.father_id].generation>=3) expanded.add(anc.father_id);
-          anc=pMap[anc.father_id];
-        }
-        expanded.add(id); // Make sure parent is expanded
-        ctRelayout();
-        // Center on child
-        if(ctPos[cid]){
-          ctOx=ctPos[cid].x-ctW/ctSc/2;
-          ctOy=ctPos[cid].y-ctH/ctSc/2+H;
-        }
-        ctDraw();
-        ctShowInfo(cid);
-      };
-      kEl.appendChild(btn);
-    });
-    document.getElementById('ct-info-kids-sec').style.display='';
-  }else{
-    document.getElementById('ct-info-kids-sec').style.display='none';
-  }
-  
-  const panel=document.getElementById('ct-info');
-  panel.style.display='block';
-  panel.style.animation='none';panel.offsetHeight;
-  panel.style.animation='panelIn 0.4s cubic-bezier(0.16,1,0.3,1) both';
-}
-
-function ctCloseInfo(){
-  document.getElementById('ct-info').style.display='none';
-}
-</script>
-
 </body>
 </html>
