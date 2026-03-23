@@ -231,7 +231,9 @@ body{
 .si-full{font-size:11px;color:var(--text-dim);margin-top:3px;line-height:1.6;}
 
 /* CANVAS */
-#canvas-wrap{position:fixed;top:56px;left:0;right:0;bottom:0;touch-action:none;}
+#canvas-wrap{position:fixed;top:56px;left:0;right:0;bottom:0;touch-action:none;
+  padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);
+}
 canvas{display:block;}
 
 
@@ -255,7 +257,9 @@ canvas{display:block;}
 .ctnav-in{width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between;}
 .ctnav-link{font-size:13px;font-weight:600;color:var(--gen1);cursor:pointer;background:none;border:none;font-family:'Tajawal',sans-serif;}
 .ctnav-title{font-size:14px;font-weight:700;color:var(--text);}
-#ct-canvas-wrap{position:fixed;top:52px;left:0;right:0;bottom:0;touch-action:none;}
+#ct-canvas-wrap{position:fixed;top:52px;left:0;right:0;bottom:0;touch-action:none;
+  padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);
+}
 #ct-legend{
   position:fixed;bottom:20px;right:16px;z-index:460;
   background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
@@ -1700,7 +1704,21 @@ function initExplore(){
 
 
 // ── INIT ──
-window.addEventListener('resize',()=>{resizeMain();draw();});
+window.addEventListener('resize',()=>{
+  resizeMain();draw();
+  // Also resize CT canvas if visible
+  if(document.getElementById('ctree').classList.contains('show')){
+    ctResize();ctDraw();
+  }
+});
+window.addEventListener('orientationchange',()=>{
+  setTimeout(()=>{
+    resizeMain();draw();
+    if(document.getElementById('ctree').classList.contains('show')){
+      ctResize();ctDraw();
+    }
+  },300);
+});
 initSplash();
 </script>
 
@@ -1789,7 +1807,7 @@ initSplash();
   </div>
 </div>
 
-<footer>عائلة علي باش · ٧ أجيال · مارس ٢٠٢٦ · v1.7.1</footer>
+<footer>عائلة علي باش · ٧ أجيال · مارس ٢٠٢٦ · v1.7.2</footer>
 </div>
 
 
@@ -2189,8 +2207,8 @@ function ctRelayout(){
 }
 
 function ctResize(){
-  ctW=ctWrap.clientWidth||window.innerWidth;
-  ctH=ctWrap.clientHeight||(window.innerHeight-52);
+  ctW=window.innerWidth;
+  ctH=window.innerHeight-52;
   ctCanvas.width=ctW*DPR;ctCanvas.height=ctH*DPR;
   ctCanvas.style.width=ctW+'px';ctCanvas.style.height=ctH+'px';
   ctCtx.setTransform(DPR,0,0,DPR,0,0);
